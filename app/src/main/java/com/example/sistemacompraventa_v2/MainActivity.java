@@ -35,4 +35,23 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+    private void selecionaMenuNavegacion(){
+
+    }
+
+    private void creaMenuUsuario() {
+
+    }
+
+    private void creaMenuNoUsuario() {
+        drawerLayout = findViewById( R.id.navigation_head );
+        Toolbar toolbar = findViewById( R.id.toolbar );
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle( this, drawerLayout, toolbar,
+                R.string.navigation_draw_open, R.string.navigation_draw_close );
+
+        drawerLayout.addDrawerListener( toggle );
+        toggle.syncState();
+    }
 }

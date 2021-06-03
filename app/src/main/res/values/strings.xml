@@ -9,6 +9,10 @@
     <string name="buscarProducto">Buscar Producto</string>
     <string name="perfil">Perfil</string>
     <string name="cerrarSesion">Cerrar Sesion</string>
+    <string name="carritoCompra">Carrito Compra</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="historial">Historial</string>
+    <string name="pedidos">Pedidos</string>
 
     <!--Cadenas de el encabezado de navegacion-->
     <string name="sistema_cv">Sistema de Compra Venta</string>

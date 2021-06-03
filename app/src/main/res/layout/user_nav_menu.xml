@@ -13,6 +13,13 @@
         </item>
 
         <item
+            android:id="@+id/buscarProducto"
+            android:icon="@drawable/ic_baseline_search_24"
+            android:title="@string/buscarProducto">
+
+        </item>
+
+        <item
             android:id="@+id/perfil"
             android:icon="@drawable/ic_baseline_person_24"
             android:title="@string/perfil">
@@ -20,9 +27,30 @@
         </item>
 
         <item
-            android:id="@+id/buscarProducto"
-            android:icon="@drawable/ic_baseline_search_24"
-            android:title="@string/buscarProducto">
+            android:id="@+id/carritoCompras"
+            android:icon="@drawable/ic_baseline_carritocompras_24"
+            android:title="@string/carritoCompra">
+
+        </item>
+
+        <item
+            android:id="@+id/favoritos"
+            android:icon="@drawable/ic_baseline_favoritos_24"
+            android:title="@string/favoritos">
+
+        </item>
+
+        <item
+            android:id="@+id/pedidos"
+            android:icon="@drawable/ic_baseline_pedidos_24"
+            android:title="@string/pedidos">
+
+        </item>
+
+        <item
+            android:id="@+id/historial"
+            android:icon="@drawable/ic_baseline_historial_24"
+            android:title="@string/historial">
 
         </item>
 

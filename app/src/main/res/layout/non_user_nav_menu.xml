@@ -14,7 +14,7 @@
 
         <item
             android:id="@+id/iniciarSesion"
-            android:icon="@drawable/ic_baseline_inicio_sesion"
+            android:icon="@drawable/ic_baseline_iniciarsesion_24"
             android:title="@string/iniciarSesion">
 
         </item>

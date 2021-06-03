@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SistemaCompraVenta_V2</string>
+
+    <!--Cadenas de barra de navegacion-->
+    <string name="home">Principal</string>
+    <string name="iniciarSesion">Iniciar Sesion</string>
+    <string name="buscarProducto">Buscar Producto</string>
+
+    <!--Cadenas de el encabezado de navegacion-->
+    <string name="sistema_cv">Sistema de Compra Venta</string>
+    <string name="mensaje_bienvenida">Bienvenido!</string>
+</resources>

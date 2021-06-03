@@ -15,7 +15,7 @@
         <item
             android:id="@+id/perfil"
             android:icon="@drawable/ic_baseline_person_24"
-            android:title="@string/iniciarSesion">
+            android:title="@string/perfil">
 
         </item>
 
@@ -29,7 +29,7 @@
         <item
             android:id="@+id/cerrarSesion"
             android:icon="@drawable/ic_baseline_cerrar_sesion_24"
-            android:title="@string/iniciarSesion">
+            android:title="@string/cerrarSesion">
 
         </item>
 

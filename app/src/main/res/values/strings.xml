@@ -7,6 +7,8 @@
     <string name="home">Principal</string>
     <string name="iniciarSesion">Iniciar Sesion</string>
     <string name="buscarProducto">Buscar Producto</string>
+    <string name="perfil">Perfil</string>
+    <string name="cerrarSesion">Cerrar Sesion</string>
 
     <!--Cadenas de el encabezado de navegacion-->
     <string name="sistema_cv">Sistema de Compra Venta</string>

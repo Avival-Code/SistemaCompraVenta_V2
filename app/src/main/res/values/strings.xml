@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">SistemaCompraVenta_V2</string>
+    <string name="navigation_draw_open">open navigation drawer</string>
+    <string name="navigation_draw_close">close navigation drawer</string>
 
     <!--Cadenas de barra de navegacion-->
     <string name="home">Principal</string>

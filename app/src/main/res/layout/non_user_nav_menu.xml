@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/home">
+
+        </item>
+
+        <item
+            android:id="@+id/iniciarSesion"
+            android:icon="@drawable/ic_baseline_inicio_sesion"
+            android:title="@string/iniciarSesion">
+
+        </item>
+
+        <item
+            android:id="@+id/buscarProducto"
+            android:icon="@drawable/ic_baseline_search_24"
+            android:title="@string/buscarProducto">
+
+        </item>
+
+    </group>
+
+</menu>

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
+import com.example.sistemacompraventa_v2.controladores.PrincipalFragmento;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById( R.id.navigation_view );
         seleccionaMenuNavegacion();
         navigationView.setNavigationItemSelectedListener( this );
+        getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new PrincipalFragmento() );
         Toolbar toolbar = findViewById( R.id.toolbar );
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle( this, drawerLayout, toolbar,
@@ -33,6 +35,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout.addDrawerListener( toggle );
         toggle.syncState();
+        if( savedInstanceState == null ) {
+            getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new PrincipalFragmento() ).commit();
+        }
     }
 
     @Override
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
-        return false;
+        return true;
     }
 
     private void seleccionaMenuNavegacion(){

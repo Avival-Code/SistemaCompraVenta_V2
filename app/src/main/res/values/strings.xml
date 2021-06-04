@@ -17,4 +17,12 @@
     <!--Cadenas de el encabezado de navegacion-->
     <string name="sistema_cv">Sistema de Compra Venta</string>
     <string name="mensaje_bienvenida">Bienvenido!</string>
+
+    <!--Cadenas del fragmento "iniciar_sesion_fragment"-->
+    <string name="usuario_field">Usuario</string>
+    <string name="iniciar_sesion_boton">Iniciar Sesion</string>
+    <string name="registro">¿No tienes cuenta? ¡Regístrate!</string>
+
+    <!--Cadenas del fragmento "principal_fragment"-->
+    <string name="texto_relleno">Principal</string>
 </resources>

@@ -1,11 +1,12 @@
 package com.example.sistemacompraventa_v2.sesionusuario;
 
+import com.example.sistemacompraventa_v2.entidades.Usuario;
+
 public final class LoginSession {
     private static LoginSession loginInstance;
+    private Usuario usuario;
 
-    private LoginSession() {
-
-    }
+    private LoginSession() { usuario = null; }
 
     public static LoginSession GetInstance() {
         if( loginInstance == null ) {
@@ -15,14 +16,20 @@ public final class LoginSession {
     }
 
     public boolean IsLoggedIn() {
-        return loginInstance == null;
+        return usuario == null;
     }
 
     public void Logout() {
-        loginInstance = null;
+        if( IsLoggedIn() ) {
+            usuario = null;
+        }
     }
 
-    public void Login() {
-
+    public void Login( Usuario usuarioIn ) {
+        if( !IsLoggedIn() && usuarioIn != null ) {
+            usuario = usuarioIn;
+        }
     }
+
+    public Usuario GetUsuario() { return usuario; }
 }

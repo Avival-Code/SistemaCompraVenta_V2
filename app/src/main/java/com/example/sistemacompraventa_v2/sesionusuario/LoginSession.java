@@ -16,7 +16,7 @@ public final class LoginSession {
     }
 
     public boolean IsLoggedIn() {
-        return usuario == null;
+        return usuario != null;
     }
 
     public void Logout() {

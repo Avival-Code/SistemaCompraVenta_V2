@@ -1,5 +1,6 @@
 package com.example.sistemacompraventa_v2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,16 +8,24 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
+import com.google.android.material.navigation.NavigationView;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
-
         drawerLayout = findViewById( R.id.navigation_head );
+
+        navigationView = findViewById( R.id.navigation_view );
+        seleccionaMenuNavegacion();
+        navigationView.setNavigationItemSelectedListener( this );
         Toolbar toolbar = findViewById( R.id.toolbar );
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle( this, drawerLayout, toolbar,
@@ -36,22 +45,48 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void selecionaMenuNavegacion(){
-
+    @Override
+    public boolean onNavigationItemSelected( @NonNull MenuItem menuItem ) {
+        switch( menuItem.getItemId() )
+        {
+            case R.id.home:
+                break;
+            case R.id.iniciarSesion:
+                break;
+            case R.id.buscarProducto:
+                break;
+            case R.id.perfil:
+                break;
+            case R.id.carritoCompras:
+                break;
+            case R.id.favoritos:
+                break;
+            case R.id.pedidos:
+                break;
+            case R.id.historial:
+                break;
+            case R.id.cerrarSesion:
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return false;
     }
 
-    private void creaMenuUsuario() {
-
+    private void seleccionaMenuNavegacion(){
+        if( !LoginSession.GetInstance().IsLoggedIn() ) {
+            setMenuNoUsuario();
+        } else {
+            setMenuUsuario();
+        }
     }
 
-    private void creaMenuNoUsuario() {
-        drawerLayout = findViewById( R.id.navigation_head );
-        Toolbar toolbar = findViewById( R.id.toolbar );
+    private void setMenuUsuario() {
+        navigationView.getMenu().clear();
+        navigationView.inflateMenu( R.menu.user_nav_menu );
+    }
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle( this, drawerLayout, toolbar,
-                R.string.navigation_draw_open, R.string.navigation_draw_close );
-
-        drawerLayout.addDrawerListener( toggle );
-        toggle.syncState();
+    private void setMenuNoUsuario() {
+        navigationView.getMenu().clear();
+        navigationView.inflateMenu( R.menu.non_user_nav_menu );
     }
 }

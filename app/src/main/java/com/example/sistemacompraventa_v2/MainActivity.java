@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.controladores.PrincipalFragmento;
+import com.example.sistemacompraventa_v2.controladores.IniciarSesionFragmento;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         if( savedInstanceState == null ) {
             getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new PrincipalFragmento() ).commit();
+            navigationView.setCheckedItem( R.id.home );
         }
     }
 
@@ -55,8 +57,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch( menuItem.getItemId() )
         {
             case R.id.home:
+                getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new PrincipalFragmento() ).commit();
                 break;
             case R.id.iniciarSesion:
+                getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new IniciarSesionFragmento() ).commit();
                 break;
             case R.id.buscarProducto:
                 break;

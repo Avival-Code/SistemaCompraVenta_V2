@@ -3,21 +3,22 @@ package com.example.sistemacompraventa_v2.entidades;
 import com.example.sistemacompraventa_v2.enumeraciones.TipoUsuario;
 
 public class Usuario {
+    private int claveUsuario;
     private String nombres;
     private String apellidos;
     private String correoElectronico;
-    private String telefono;
-    private String usuario;
+    private String nombreUsuario;
     private String contrasena;
-    private float calificacion;
     private TipoUsuario tipoUsuario;
+    private String telefono;
+    private float calificacion;
 
     public Usuario() {
         nombres = "";
         apellidos = "";
         correoElectronico = "";
         telefono = "";
-        usuario = "";
+        nombreUsuario = "";
         contrasena = "";
         calificacion = 0.0f;
         tipoUsuario = null;
@@ -28,7 +29,7 @@ public class Usuario {
         apellidos = original.apellidos;
         correoElectronico = original.correoElectronico;
         telefono = original.telefono;
-        usuario = original.usuario;
+        nombreUsuario = original.nombreUsuario;
         contrasena = original.contrasena;
         calificacion = original.calificacion;
         tipoUsuario = original.tipoUsuario;
@@ -40,11 +41,13 @@ public class Usuario {
         apellidos = apellidosIn;
         correoElectronico = correoIn;
         telefono = telefonoIn;
-        usuario = usuarioIn;
+        nombreUsuario = usuarioIn;
         contrasena = contrasenaIn;
         calificacion = calificacionIn;
         tipoUsuario = tipoIn;
     }
+
+    public int getClaveUsuario() { return claveUsuario; }
 
     public String getNombres() { return nombres; }
 
@@ -54,13 +57,15 @@ public class Usuario {
 
     public String getTelefono() { return telefono; }
 
-    public String getUsuario() { return usuario; }
+    public String getUsuario() { return nombreUsuario; }
 
     public String getContrasena() { return contrasena; }
 
     public float getCalificacion() { return calificacion; }
 
     public TipoUsuario getTipoUsuario() { return tipoUsuario; }
+
+    public void setClaveUsuario( int claveUsuarioIn ) { claveUsuario = claveUsuarioIn; }
 
     public void setNombres( String nombresIn ) { nombres = nombresIn; }
 
@@ -70,7 +75,7 @@ public class Usuario {
 
     public void setTelefono( String telefonoIn ) { telefono = telefonoIn; }
 
-    public void setUsuario( String usuarioIn ) { usuario = usuarioIn; }
+    public void setUsuario( String usuarioIn ) { nombreUsuario = usuarioIn; }
 
     public void setContrasena( String contrasenaIn ) { contrasena = contrasenaIn; }
 

@@ -56,4 +56,10 @@
     <string name="telefono_invalido">El telefono introducido no es valido.</string>
     <string name="contrasena_invalida">La contrasena introducida no es valida.</string>
     <string name="contrasenas_no_coinciden">Las contrasenas no coinciden.</string>
+
+    <!--Cadenas del fragmento "perfil_fragment"-->
+    <string name="modificar_datos_button">Modificar Datos personales</string>
+    <string name="agregar_domicilio_button">Agregar Domicilio</string>
+    <string name="perfil_imageview">perfil_image</string>
+
 </resources>

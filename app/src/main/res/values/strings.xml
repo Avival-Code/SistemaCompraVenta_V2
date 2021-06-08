@@ -63,4 +63,8 @@
     <string name="agregar_domicilio_button">Agregar Domicilio</string>
     <string name="perfil_imageview">perfil_image</string>
 
+    <!--Cadenas del fragmento "modificar_datos_fragment-->
+    <string name="modificar_datos_titulo">Modificar Datos Personales</string>
+    <string name="modificar_datos_personales_button">Modificar Datos</string>
+    <string name="cancelar_button">Cancelar</string>
 </resources>

@@ -62,6 +62,7 @@
     <string name="modificar_datos_button">Modificar Datos personales</string>
     <string name="agregar_domicilio_button">Agregar Domicilio</string>
     <string name="perfil_imageview">perfil_image</string>
+    <string name="eliminar_cuenta">Eliminar Cuenta</string>
 
     <!--Cadenas del fragmento "modificar_datos_fragment-->
     <string name="modificar_datos_titulo">Modificar Datos Personales</string>

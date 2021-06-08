@@ -24,6 +24,7 @@ public class PerfilFragmento extends Fragment implements View.OnClickListener{
     private TextView telefono;
     private Button modificarDatos;
     private Button agregarDomicilio;
+    private Button eliminarCuenta;
     private ApiRequests requests;
 
     @Nullable
@@ -34,12 +35,14 @@ public class PerfilFragmento extends Fragment implements View.OnClickListener{
         requests = new ApiRequests();
         modificarDatos = ( Button )perfilView.findViewById( R.id.modificar_datos_button );
         agregarDomicilio = ( Button )perfilView.findViewById( R.id.agregar_domicilio_button );
+        eliminarCuenta = ( Button )perfilView.findViewById( R.id.eliminar_cuenta_button );
         nombres = ( TextView ) perfilView.findViewById( R.id.usuario_nombres_text );
         apellidos = ( TextView ) perfilView.findViewById( R.id.usuario_apellidos_text );
         correo = ( TextView ) perfilView.findViewById( R.id.usuario_correo_text );
         telefono = ( TextView ) perfilView.findViewById( R.id.usuario_telefono_text );
         modificarDatos.setOnClickListener( this );
         agregarDomicilio.setOnClickListener( this );
+        eliminarCuenta.setOnClickListener( this );
         loadUserInfo();
 
         return perfilView;
@@ -53,6 +56,9 @@ public class PerfilFragmento extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.agregar_domicilio_button:
+                break;
+
+            case R.id.eliminar_cuenta_button:
                 break;
         }
     }

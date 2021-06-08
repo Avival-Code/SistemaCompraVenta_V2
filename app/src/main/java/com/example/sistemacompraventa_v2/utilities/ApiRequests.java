@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -13,13 +14,18 @@ import com.android.volley.toolbox.Volley;
 import com.example.sistemacompraventa_v2.MainActivity;
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.entidades.Usuario;
+import com.example.sistemacompraventa_v2.enumeraciones.TipoUsuario;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ApiRequests {
     private String loginURL = "http://192.168.1.68:5000/login";
     private String usuariosURL = "http://192.168.1.68:5000/usuarios";
+    private String usuarioEspecificoURL = "http://192.168.1.68.5000/usuarios/";
     private ObjetosJson objetos = null;
     private RequestQueue request = null;
 
@@ -78,9 +84,34 @@ public class ApiRequests {
     public void getUserInfo( final Context currentContext, final int claveUsuario, final String accessToken ) {
         request = Volley.newRequestQueue( currentContext );
         try {
-            JSONObject payload = objetos.crearObjetoJson( claveUsuario );
-        } catch( org.json.JSONException exception ) {
-
-        }
+            String requestURL = usuarioEspecificoURL + claveUsuario;
+            JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.GET, requestURL, null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse( JSONObject response ) {
+                    if( response != null ) {
+                        Usuario temp = new Usuario( response.optInt( "clave_usuario" ), response.optString( "nombres" ), response.optString( "apellidos" ),
+                                response.optString( "nombres_usuario" ), response.optString( "contrasena" ), response.optString( "correo_electronico" ),
+                                response.optString("telefono" ), ( float )response.optDouble( "calificacion" ),
+                                TipoUsuario.values() [ response.optInt( "tipo_usuario" ) ] );
+                        LoginSession.getInstance().setUsuario( temp );
+                    } else {
+                        Toast.makeText( currentContext, R.string.usuario_no_encontrado, Toast.LENGTH_SHORT ).show();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse( VolleyError error ) {
+                    Toast.makeText( currentContext, R.string.clave_usuario_no_encontrada, Toast.LENGTH_SHORT ).show();
+                }
+            } ) {
+                @Override
+                public Map< String, String > getHeaders() throws AuthFailureError {
+                    Map< String, String > headers = new HashMap< String, String > ();
+                    headers.put( "Authorization", "Bearer " + accessToken );
+                    return headers;
+                }
+            };
+            request.add( objectRequest );
+        } catch( Exception exception ) { exception.printStackTrace(); }
     }
 }

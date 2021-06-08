@@ -11,6 +11,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.entidades.Usuario;
+import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 
 import org.json.JSONObject;
 
@@ -25,7 +26,29 @@ public class ApiRequests {
     }
 
     public void Login( final Context currentContext, final String usuario, final String contrasena ) {
-
+        request = Volley.newRequestQueue( currentContext );
+        try {
+            JSONObject payload = objetos.crearObjetoJson( usuario, contrasena );
+            JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.POST, loginURL, payload, new Response.Listener< JSONObject >() {
+                @Override
+                public void onResponse( JSONObject response ) {
+                    if( response != null ) {
+                        LoginSession.GetInstance().Login( response.optInt( "clave_usuario" ), response.optString( "access_token" ) );
+                        Toast.makeText( currentContext, R.string.login_exitoso, Toast.LENGTH_SHORT ).show();
+                    } else {
+                        Toast.makeText( currentContext, R.string.usuario_no_encontrado, Toast.LENGTH_SHORT ).show();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse( VolleyError error ) {
+                    Toast.makeText( currentContext, R.string.login_fracaso, Toast.LENGTH_SHORT ).show();
+                }
+            } );
+            request.add( objectRequest );
+        } catch( org.json.JSONException json ) {
+            json.printStackTrace();
+        }
     }
 
     public void RegisterUser( final Context currentContext, final Usuario usuario ) {

@@ -17,4 +17,11 @@ public class ObjetosJson {
         objeto.put( "calificacion", usuario.getCalificacion() );
         return objeto;
     }
+
+    public JSONObject crearObjetoJson( String username, String password ) throws org.json.JSONException {
+        JSONObject objeto = new JSONObject();
+        objeto.put( "username", username );
+        objeto.put( "password", password );
+        return objeto;
+    }
 }

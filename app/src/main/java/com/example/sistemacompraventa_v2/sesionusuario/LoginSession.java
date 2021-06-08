@@ -34,7 +34,7 @@ public final class LoginSession {
     }
 
     public void Login( int claveIn, String tokenIn ) {
-        if( !IsLoggedIn() && claveUsuario != -1 ) {
+        if( !IsLoggedIn() && claveUsuario == -1 ) {
             claveUsuario = claveIn;
             accessToken = tokenIn;
         }

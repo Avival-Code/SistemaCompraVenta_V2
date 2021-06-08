@@ -42,6 +42,9 @@
     <!--Cadenas de respuesta para la clase "ApiRequest.java"-->
     <string name="usuario_ya_existe">El usuario ya existe.</string>
     <string name="usuario_creado_exito">El usuario fue creado exitosamente.</string>
+    <string name="login_exitoso">Inicio de sesion exitosa</string>
+    <string name="login_fracaso">Sucedio un error al momento de iniciar sesion.</string>
+    <string name="usuario_no_encontrado">No se encontro el usuario especificado</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>

@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.sistemacompraventa_v2.MainActivity;
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.utilities.ApiRequests;
@@ -50,7 +51,7 @@ public class IniciarSesionFragmento extends Fragment implements View.OnClickList
                 if( validator.IsLoginInformationValid( ( ( EditText )inicioSesionView.findViewById( R.id.inicio_usuario_field ) ).getText().toString(),
                                                        ( ( EditText )inicioSesionView.findViewById( R.id.inicio_contrasena_field ) ).getText().toString() ) &&
                     !LoginSession.GetInstance().IsLoggedIn() ) {
-                    requests.Login( getActivity().getBaseContext(), ( ( EditText )inicioSesionView.findViewById( R.id.inicio_usuario_field ) ).getText().toString(),
+                    requests.Login( getActivity(), ( ( EditText )inicioSesionView.findViewById( R.id.inicio_usuario_field ) ).getText().toString(),
                                     ( ( EditText )inicioSesionView.findViewById( R.id.inicio_contrasena_field ) ).getText().toString() );
                 }
                 break;

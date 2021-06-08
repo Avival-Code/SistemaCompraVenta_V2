@@ -98,4 +98,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.getMenu().clear();
         navigationView.inflateMenu( R.menu.non_user_nav_menu );
     }
+
+    public void setUserMenu() {
+        navigationView = findViewById( R.id.navigation_view );
+        navigationView.getMenu().clear();
+        navigationView.inflateMenu( R.menu.user_nav_menu );
+        navigationView.setNavigationItemSelectedListener( this );
+        navigationView.setCheckedItem( R.id.home );
+    }
 }

@@ -74,24 +74,4 @@ public class ApiRequests {
             json.printStackTrace();
         }
     }
-
-/*
-    public void RegisterUser( final Context currentContext, final Usuario usuario ) {
-        request = Volley.newRequestQueue( currentContext );
-        request.getCache().clear();
-        JsonArrayRequest objectRequest = new JsonArrayRequest( Request.Method.GET, usuariosURL, null, new Response.Listener< JSONArray >(){
-           @Override
-           public void onResponse( JSONArray response ) {
-               Toast.makeText( currentContext, response.toString(), Toast.LENGTH_SHORT ).show();
-           } }, new Response.ErrorListener() {
-               @Override
-               public void onErrorResponse( VolleyError error ) {
-                   String msg = error.getMessage();
-                   Toast.makeText( currentContext, msg, Toast.LENGTH_SHORT ).show();
-                }
-            }
-        );
-        request.add( objectRequest );
-    };
-*/
 }

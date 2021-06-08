@@ -80,7 +80,7 @@ public class IniciarSesionFragmento extends Fragment implements View.OnClickList
     }
 
     private void isLoggedIn() {
-        if( !LoginSession.GetInstance().IsLoggedIn() ) {
+        if( LoginSession.GetInstance().IsLoggedIn() ) {
             Toast.makeText( getContext(), R.string.sesion_iniciada, Toast.LENGTH_SHORT ).show();
         }
     }

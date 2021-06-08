@@ -22,7 +22,7 @@ public final class LoginSession {
     }
 
     public boolean IsLoggedIn() {
-        return claveUsuario != -1;
+        return claveUsuario > -1;
     }
 
     public void Logout() {

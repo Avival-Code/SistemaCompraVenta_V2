@@ -25,16 +25,15 @@ import java.util.Map;
 public class ApiRequests {
     private String loginURL = "http://192.168.1.68:5000/login";
     private String usuariosURL = "http://192.168.1.68:5000/usuarios";
-    private String usuarioEspecificoURL = "http://192.168.1.68.5000/usuarios/";
+    private String usuarioEspecificoURL = "http://192.168.1.68:5000/usuarios/";
     private ObjetosJson objetos = null;
-    private RequestQueue request = null;
 
     public ApiRequests() {
         objetos = new ObjetosJson();
     }
 
     public void login( final Activity currentActivity, final String usuario, final String contrasena ) {
-        request = Volley.newRequestQueue( currentActivity.getBaseContext() );
+        RequestQueue request = Volley.newRequestQueue( currentActivity.getBaseContext() );
         try {
             JSONObject payload = objetos.crearObjetoJson( usuario, contrasena );
             JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.POST, loginURL, payload, new Response.Listener< JSONObject >() {
@@ -44,6 +43,7 @@ public class ApiRequests {
                         LoginSession.getInstance().login( response.optInt( "clave_usuario" ), response.optString( "access_token" ) );
                         ( ( MainActivity )currentActivity ).setUserMenu();
                         Toast.makeText( currentActivity.getBaseContext(), R.string.login_exitoso, Toast.LENGTH_SHORT ).show();
+                        getUserInfo( currentActivity.getBaseContext(), LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
                     } else {
                         Toast.makeText( currentActivity.getBaseContext(), R.string.usuario_no_encontrado, Toast.LENGTH_SHORT ).show();
                     }
@@ -61,7 +61,7 @@ public class ApiRequests {
     }
 
     public void registerUser( final Context currentContext, final Usuario usuario ) {
-        request = Volley.newRequestQueue( currentContext );
+        RequestQueue request = Volley.newRequestQueue( currentContext );
         try {
             JSONObject payload = objetos.crearObjectoJson( usuario );
             JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.POST, usuariosURL, payload, new Response.Listener< JSONObject >() {
@@ -82,7 +82,7 @@ public class ApiRequests {
     }
 
     public void getUserInfo( final Context currentContext, final int claveUsuario, final String accessToken ) {
-        request = Volley.newRequestQueue( currentContext );
+        RequestQueue request = Volley.newRequestQueue( currentContext );
         try {
             String requestURL = usuarioEspecificoURL + claveUsuario;
             JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.GET, requestURL, null, new Response.Listener<JSONObject>() {
@@ -90,9 +90,8 @@ public class ApiRequests {
                 public void onResponse( JSONObject response ) {
                     if( response != null ) {
                         Usuario temp = new Usuario( response.optInt( "clave_usuario" ), response.optString( "nombres" ), response.optString( "apellidos" ),
-                                response.optString( "nombres_usuario" ), response.optString( "contrasena" ), response.optString( "correo_electronico" ),
-                                response.optString("telefono" ), ( float )response.optDouble( "calificacion" ),
-                                TipoUsuario.values() [ response.optInt( "tipo_usuario" ) ] );
+                                response.optString( "correo_electronico" ), response.optString("telefono" ), response.optString( "nombre_usuario" ),
+                                response.optString( "contrasena" ), ( float )response.optDouble( "calificacion" ), TipoUsuario.values() [ response.optInt( "tipo_usuario" ) ] );
                         LoginSession.getInstance().setUsuario( temp );
                     } else {
                         Toast.makeText( currentContext, R.string.usuario_no_encontrado, Toast.LENGTH_SHORT ).show();
@@ -106,7 +105,7 @@ public class ApiRequests {
             } ) {
                 @Override
                 public Map< String, String > getHeaders() throws AuthFailureError {
-                    Map< String, String > headers = new HashMap< String, String > ();
+                    HashMap< String, String > headers = new HashMap< String, String > ();
                     headers.put( "Authorization", "Bearer " + accessToken );
                     return headers;
                 }

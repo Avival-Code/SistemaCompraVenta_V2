@@ -56,6 +56,7 @@ public class PerfilFragmento extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.agregar_domicilio_button:
+                showAddAddressScreen();
                 break;
 
             case R.id.eliminar_cuenta_button:
@@ -73,9 +74,6 @@ public class PerfilFragmento extends Fragment implements View.OnClickListener{
     }
 
     private void loadUserInfo() {
-        if( LoginSession.getInstance().getUsuario() == null ) {
-            requests.getUserInfo( getActivity().getBaseContext(), LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
-        }
         nombres.setText( LoginSession.getInstance().getUsuario().getNombres() );
         apellidos.setText( LoginSession.getInstance().getUsuario().getApellidos() );
         correo.setText( LoginSession.getInstance().getUsuario().getCorreoElectronico() );

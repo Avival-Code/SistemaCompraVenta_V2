@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.sistemacompraventa_v2.controladores.PerfilFragmento;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.controladores.PrincipalFragmento;
 import com.example.sistemacompraventa_v2.controladores.IniciarSesionFragmento;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.buscarProducto:
                 break;
             case R.id.perfil:
+                getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new PerfilFragmento() ).commit();
                 break;
             case R.id.carritoCompras:
                 break;

@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.historial:
                 break;
             case R.id.cerrarSesion:
-                LoginSession.GetInstance().Logout();
+                LoginSession.getInstance().logout();
                 setNonUserMenu();
                 getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new PrincipalFragmento() ).commit();
                 Toast.makeText( getBaseContext(), R.string.cerrando_sesion, Toast.LENGTH_SHORT ).show();
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void seleccionaMenuNavegacion(){
-        if( !LoginSession.GetInstance().IsLoggedIn() ) {
+        if( !LoginSession.getInstance().isLoggedIn() ) {
             setMenuNoUsuario();
         } else {
             setMenuUsuario();

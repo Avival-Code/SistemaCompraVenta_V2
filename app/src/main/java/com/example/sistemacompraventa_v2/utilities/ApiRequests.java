@@ -27,7 +27,7 @@ public class ApiRequests {
         objetos = new ObjetosJson();
     }
 
-    public void Login( final Activity currentActivity, final String usuario, final String contrasena ) {
+    public void login( final Activity currentActivity, final String usuario, final String contrasena ) {
         request = Volley.newRequestQueue( currentActivity.getBaseContext() );
         try {
             JSONObject payload = objetos.crearObjetoJson( usuario, contrasena );
@@ -35,7 +35,7 @@ public class ApiRequests {
                 @Override
                 public void onResponse( JSONObject response ) {
                     if( response != null ) {
-                        LoginSession.GetInstance().Login( response.optInt( "clave_usuario" ), response.optString( "access_token" ) );
+                        LoginSession.getInstance().login( response.optInt( "clave_usuario" ), response.optString( "access_token" ) );
                         ( ( MainActivity )currentActivity ).setUserMenu();
                         Toast.makeText( currentActivity.getBaseContext(), R.string.login_exitoso, Toast.LENGTH_SHORT ).show();
                     } else {
@@ -54,7 +54,7 @@ public class ApiRequests {
         }
     }
 
-    public void RegisterUser( final Context currentContext, final Usuario usuario ) {
+    public void registerUser( final Context currentContext, final Usuario usuario ) {
         request = Volley.newRequestQueue( currentContext );
         try {
             JSONObject payload = objetos.crearObjectoJson( usuario );
@@ -72,6 +72,15 @@ public class ApiRequests {
             request.add( objectRequest );
         } catch( org.json.JSONException json ) {
             json.printStackTrace();
+        }
+    }
+
+    public void getUserInfo( final Context currentContext, final int claveUsuario, final String accessToken ) {
+        request = Volley.newRequestQueue( currentContext );
+        try {
+            JSONObject payload = objetos.crearObjetoJson( claveUsuario );
+        } catch( org.json.JSONException exception ) {
+
         }
     }
 }

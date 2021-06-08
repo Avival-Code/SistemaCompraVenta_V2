@@ -14,27 +14,27 @@ public final class LoginSession {
         usuario = null;
     }
 
-    public static LoginSession GetInstance() {
+    public static LoginSession getInstance() {
         if( loginInstance == null ) {
             loginInstance = new LoginSession();
         }
         return loginInstance;
     }
 
-    public boolean IsLoggedIn() {
+    public boolean isLoggedIn() {
         return claveUsuario > -1;
     }
 
-    public void Logout() {
-        if( IsLoggedIn() ) {
+    public void logout() {
+        if( isLoggedIn() ) {
             claveUsuario = -1;
             accessToken = "";
             usuario = null;
         }
     }
 
-    public void Login( int claveIn, String tokenIn ) {
-        if( !IsLoggedIn() && claveUsuario == -1 ) {
+    public void login(int claveIn, String tokenIn ) {
+        if( !isLoggedIn() && claveUsuario == -1 ) {
             claveUsuario = claveIn;
             accessToken = tokenIn;
         }

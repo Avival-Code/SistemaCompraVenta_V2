@@ -14,8 +14,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
-import com.example.sistemacompraventa_v2.utilities.ApiRequests;
-import com.example.sistemacompraventa_v2.utilities.StringValidator;
 
 public class PerfilFragmento extends Fragment implements View.OnClickListener{
     private View perfilView;
@@ -65,12 +63,12 @@ public class PerfilFragmento extends Fragment implements View.OnClickListener{
     }
 
     private void loadUserInfo() {
-        if( LoginSession.GetInstance().getUsuario() == null ) {
+        if( LoginSession.getInstance().getUsuario() == null ) {
 
         }
-        nombres.setText( LoginSession.GetInstance().getUsuario().getNombres() );
-        apellidos.setText( LoginSession.GetInstance().getUsuario().getApellidos() );
-        correo.setText( LoginSession.GetInstance().getUsuario().getCorreoElectronico() );
-        telefono.setText( LoginSession.GetInstance().getUsuario().getTelefono() );
+        nombres.setText( LoginSession.getInstance().getUsuario().getNombres() );
+        apellidos.setText( LoginSession.getInstance().getUsuario().getApellidos() );
+        correo.setText( LoginSession.getInstance().getUsuario().getCorreoElectronico() );
+        telefono.setText( LoginSession.getInstance().getUsuario().getTelefono() );
     }
 }

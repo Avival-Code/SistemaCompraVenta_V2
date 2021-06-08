@@ -43,7 +43,7 @@ public class RegistrarFragmento extends Fragment implements View.OnClickListener
             case R.id.register_button:
                 checkUserInput();
                 if( validator.IsUsuarioInformationValid( createUser(), ( ( EditText )registerView.findViewById( R.id.confirmar_contrasena_field ) ).getText().toString() ) ) {
-                    requests.RegisterUser( getActivity().getBaseContext(), createUser() );
+                    requests.registerUser( getActivity().getBaseContext(), createUser() );
                 }
                 break;
         }

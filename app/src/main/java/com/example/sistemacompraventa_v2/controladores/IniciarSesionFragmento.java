@@ -13,13 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.sistemacompraventa_v2.MainActivity;
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.utilities.ApiRequests;
 import com.example.sistemacompraventa_v2.utilities.StringValidator;
-
-import java.security.Principal;
 
 public class IniciarSesionFragmento extends Fragment implements View.OnClickListener {
     private View inicioSesionView;
@@ -52,8 +49,8 @@ public class IniciarSesionFragmento extends Fragment implements View.OnClickList
                 isLoggedIn();
                 if( validator.IsLoginInformationValid( ( ( EditText )inicioSesionView.findViewById( R.id.inicio_usuario_field ) ).getText().toString(),
                                                        ( ( EditText )inicioSesionView.findViewById( R.id.inicio_contrasena_field ) ).getText().toString() ) &&
-                    !LoginSession.GetInstance().IsLoggedIn() ) {
-                    requests.Login( getActivity(), ( ( EditText )inicioSesionView.findViewById( R.id.inicio_usuario_field ) ).getText().toString(),
+                    !LoginSession.getInstance().isLoggedIn() ) {
+                    requests.login( getActivity(), ( ( EditText )inicioSesionView.findViewById( R.id.inicio_usuario_field ) ).getText().toString(),
                                     ( ( EditText )inicioSesionView.findViewById( R.id.inicio_contrasena_field ) ).getText().toString() );
                     showMainScreen();
                 }
@@ -83,7 +80,7 @@ public class IniciarSesionFragmento extends Fragment implements View.OnClickList
     }
 
     private void isLoggedIn() {
-        if( LoginSession.GetInstance().IsLoggedIn() ) {
+        if( LoginSession.getInstance().isLoggedIn() ) {
             Toast.makeText( getContext(), R.string.sesion_iniciada, Toast.LENGTH_SHORT ).show();
         }
     }

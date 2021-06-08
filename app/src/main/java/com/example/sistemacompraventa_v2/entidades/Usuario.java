@@ -14,6 +14,7 @@ public class Usuario {
     private float calificacion;
 
     public Usuario() {
+        claveUsuario = 0;
         nombres = "";
         apellidos = "";
         correoElectronico = "";
@@ -25,6 +26,7 @@ public class Usuario {
     }
 
     public Usuario( Usuario original ) {
+        claveUsuario = original.claveUsuario;
         nombres = original.nombres;
         apellidos = original.apellidos;
         correoElectronico = original.correoElectronico;
@@ -35,8 +37,9 @@ public class Usuario {
         tipoUsuario = original.tipoUsuario;
     }
 
-    public Usuario( String nombresIn, String apellidosIn, String correoIn, String telefonoIn,
+    public Usuario( int claveUsuarioIn, String nombresIn, String apellidosIn, String correoIn, String telefonoIn,
                     String usuarioIn, String contrasenaIn, float calificacionIn, TipoUsuario tipoIn ) {
+        claveUsuario = claveUsuarioIn;
         nombres = nombresIn;
         apellidos = apellidosIn;
         correoElectronico = correoIn;

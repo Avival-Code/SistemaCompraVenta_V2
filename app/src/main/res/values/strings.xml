@@ -37,4 +37,8 @@
     <string name="contrasena">Contraseña</string>
     <string name="confirmar_contrasena">Confirmar Contraseña</string>
     <string name="realizarRegistro">Realizar Registro</string>
+
+    <!--Cadenas de respuesta para la clase "ApiRequest.java"-->
+    <string name="usuario_ya_existe">El usuario ya existe.</string>
+    <string name="usuario_creado_exito">El usuario fue creado exitosamente.</string>
 </resources>

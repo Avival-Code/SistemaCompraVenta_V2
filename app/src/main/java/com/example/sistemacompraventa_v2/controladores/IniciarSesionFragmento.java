@@ -20,10 +20,10 @@ public class IniciarSesionFragmento extends Fragment implements View.OnClickList
     @Nullable
     @Override
     public View onCreateView( @NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState ) {
-        View mainView = inflater.inflate( R.layout.iniciar_sesion_fragment,container, false );
+        View mainView = inflater.inflate( R.layout.iniciar_sesion_fragment, container, false );
 
         iniciar_sesion_button = ( Button )mainView.findViewById( R.id.iniciar_sesion_button );
-        register_button = ( Button )mainView.findViewById( R.id.register_button );
+        register_button = ( Button )mainView.findViewById( R.id.register_fragment_button );
         iniciar_sesion_button.setOnClickListener( this );
         register_button.setOnClickListener( this );
 
@@ -37,7 +37,7 @@ public class IniciarSesionFragmento extends Fragment implements View.OnClickList
             case R.id.iniciar_sesion_button:
                 break;
 
-            case R.id.register_button:
+            case R.id.register_fragment_button:
                 final FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
                 transaction.replace( R.id.Fragment_container, new RegistrarFragmento() ).commit();
                 break;

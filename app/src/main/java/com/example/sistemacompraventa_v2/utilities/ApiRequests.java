@@ -24,6 +24,10 @@ public class ApiRequests {
         objetos = new ObjetosJson();
     }
 
+    public void Login( final Context currentContext, final String usuario, final String contrasena ) {
+
+    }
+
     public void RegisterUser( final Context currentContext, final Usuario usuario ) {
         request = Volley.newRequestQueue( currentContext );
         try {

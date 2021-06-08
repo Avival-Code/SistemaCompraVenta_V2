@@ -22,6 +22,7 @@
     <string name="usuario_field">Usuario</string>
     <string name="iniciar_sesion_boton">Iniciar Sesion</string>
     <string name="registro">¿No tienes cuenta? ¡Regístrate!</string>
+    <string name="sesion_iniciada">Ya hay una sesion abierta.</string>
 
     <!--Cadenas del fragmento "principal_fragment"-->
     <string name="texto_relleno">Principal</string>

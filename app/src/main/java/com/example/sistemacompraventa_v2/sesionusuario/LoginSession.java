@@ -44,5 +44,7 @@ public final class LoginSession {
 
     public void setUsuario( Usuario usuarioIn ) { usuario = usuarioIn; }
 
+    public int getClaveUsuario() { return claveUsuario; }
+
     public String getAccessToken() { return accessToken; }
 }

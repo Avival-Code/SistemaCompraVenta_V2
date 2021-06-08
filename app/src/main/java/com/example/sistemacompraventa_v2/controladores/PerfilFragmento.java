@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
+import com.example.sistemacompraventa_v2.utilities.ApiRequests;
 
 public class PerfilFragmento extends Fragment implements View.OnClickListener{
     private View perfilView;
@@ -23,12 +24,14 @@ public class PerfilFragmento extends Fragment implements View.OnClickListener{
     private TextView telefono;
     private Button modificarDatos;
     private Button agregarDomicilio;
+    private ApiRequests requests;
 
     @Nullable
     @Override
     public View onCreateView( @NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState ) {
         perfilView = inflater.inflate( R.layout.perfil_fragment, container, false );
 
+        requests = new ApiRequests();
         modificarDatos = ( Button )perfilView.findViewById( R.id.modificar_datos_button );
         agregarDomicilio = ( Button )perfilView.findViewById( R.id.agregar_domicilio_button );
         nombres = ( TextView ) perfilView.findViewById( R.id.usuario_nombres_text );
@@ -37,6 +40,7 @@ public class PerfilFragmento extends Fragment implements View.OnClickListener{
         telefono = ( TextView ) perfilView.findViewById( R.id.usuario_telefono_text );
         modificarDatos.setOnClickListener( this );
         agregarDomicilio.setOnClickListener( this );
+        loadUserInfo();
 
         return perfilView;
     }
@@ -64,7 +68,7 @@ public class PerfilFragmento extends Fragment implements View.OnClickListener{
 
     private void loadUserInfo() {
         if( LoginSession.getInstance().getUsuario() == null ) {
-
+            requests.getUserInfo( getActivity().getBaseContext(), LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
         }
         nombres.setText( LoginSession.getInstance().getUsuario().getNombres() );
         apellidos.setText( LoginSession.getInstance().getUsuario().getApellidos() );

@@ -19,6 +19,8 @@ import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.utilities.ApiRequests;
 import com.example.sistemacompraventa_v2.utilities.StringValidator;
 
+import java.security.Principal;
+
 public class IniciarSesionFragmento extends Fragment implements View.OnClickListener {
     private View inicioSesionView;
     private Button iniciar_sesion_button;
@@ -53,12 +55,12 @@ public class IniciarSesionFragmento extends Fragment implements View.OnClickList
                     !LoginSession.GetInstance().IsLoggedIn() ) {
                     requests.Login( getActivity(), ( ( EditText )inicioSesionView.findViewById( R.id.inicio_usuario_field ) ).getText().toString(),
                                     ( ( EditText )inicioSesionView.findViewById( R.id.inicio_contrasena_field ) ).getText().toString() );
+                    showMainScreen();
                 }
                 break;
 
             case R.id.register_fragment_button:
-                final FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                transaction.replace( R.id.Fragment_container, new RegistrarFragmento() ).commit();
+                showRegisterScreen();
                 break;
         }
     }
@@ -84,5 +86,15 @@ public class IniciarSesionFragmento extends Fragment implements View.OnClickList
         if( LoginSession.GetInstance().IsLoggedIn() ) {
             Toast.makeText( getContext(), R.string.sesion_iniciada, Toast.LENGTH_SHORT ).show();
         }
+    }
+
+    private void showRegisterScreen() {
+        final FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace( R.id.Fragment_container, new RegistrarFragmento() ).commit();
+    }
+
+    private void showMainScreen() {
+        final FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace( R.id.Fragment_container, new PrincipalFragmento() ).commit();
     }
 }

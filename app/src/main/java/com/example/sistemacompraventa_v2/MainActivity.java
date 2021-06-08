@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.controladores.PrincipalFragmento;
@@ -75,6 +76,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.historial:
                 break;
             case R.id.cerrarSesion:
+                LoginSession.GetInstance().Logout();
+                setNonUserMenu();
+                getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new PrincipalFragmento() ).commit();
+                Toast.makeText( getBaseContext(), R.string.cerrando_sesion, Toast.LENGTH_SHORT ).show();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -103,6 +108,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById( R.id.navigation_view );
         navigationView.getMenu().clear();
         navigationView.inflateMenu( R.menu.user_nav_menu );
+        navigationView.setNavigationItemSelectedListener( this );
+        navigationView.setCheckedItem( R.id.home );
+    }
+
+    public void setNonUserMenu() {
+        navigationView = findViewById( R.id.navigation_view );
+        navigationView.getMenu().clear();
+        navigationView.inflateMenu( R.menu.non_user_nav_menu );
         navigationView.setNavigationItemSelectedListener( this );
         navigationView.setCheckedItem( R.id.home );
     }

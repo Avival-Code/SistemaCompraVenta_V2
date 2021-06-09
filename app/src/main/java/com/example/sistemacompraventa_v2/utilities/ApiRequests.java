@@ -141,19 +141,21 @@ public class ApiRequests {
         } catch( Exception exception ) { exception.printStackTrace(); }
     }
 
-    public void eliminarUsuario( final Context currentContext, final int claveUsuario, final String accessToken ) {
-        RequestQueue request = Volley.newRequestQueue( currentContext );
+    public void eliminarUsuario( final Activity currentActivity, final int claveUsuario, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentActivity.getBaseContext() );
         try {
             String requestURL = usuarioEspecificoURL + claveUsuario;
             JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.DELETE, requestURL, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse( JSONObject response ) {
-                    Toast.makeText( currentContext, R.string.eliminacion_exitosa, Toast.LENGTH_SHORT ).show();
+                    LoginSession.getInstance().logout();
+                    ( ( MainActivity )currentActivity ).setNonUserMenu();
+                    Toast.makeText( currentActivity.getBaseContext(), R.string.eliminacion_exitosa, Toast.LENGTH_SHORT ).show();
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse( VolleyError error ) {
-                    Toast.makeText( currentContext, R.string.clave_usuario_no_encontrada, Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( currentActivity.getBaseContext(), R.string.clave_usuario_no_encontrada, Toast.LENGTH_SHORT ).show();
                 }
             } ) {
                 @Override

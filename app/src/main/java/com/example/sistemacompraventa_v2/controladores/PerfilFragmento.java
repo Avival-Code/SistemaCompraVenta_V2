@@ -16,6 +16,8 @@ import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.utilities.ApiRequests;
 
+import java.security.Principal;
+
 public class PerfilFragmento extends Fragment implements View.OnClickListener{
     private View perfilView;
     private TextView nombres;
@@ -61,6 +63,8 @@ public class PerfilFragmento extends Fragment implements View.OnClickListener{
 
             case R.id.eliminar_cuenta_button:
                 requests.eliminarUsuario( getActivity().getBaseContext(), LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
+                LoginSession.getInstance().logout();
+                showMainScreen();
                 break;
         }
     }
@@ -72,6 +76,11 @@ public class PerfilFragmento extends Fragment implements View.OnClickListener{
 
     private void showAddAddressScreen() {
 
+    }
+
+    private void showMainScreen() {
+        final FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace( R.id.Fragment_container, new PrincipalFragmento() ).commit();
     }
 
     private void loadUserInfo() {

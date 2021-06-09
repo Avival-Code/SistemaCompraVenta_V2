@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.entidades.Usuario;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
+import com.example.sistemacompraventa_v2.utilities.ApiRequests;
 import com.example.sistemacompraventa_v2.utilities.StringValidator;
 
 public class ModificarDatosFragmento extends Fragment implements View.OnClickListener {
@@ -24,6 +24,7 @@ public class ModificarDatosFragmento extends Fragment implements View.OnClickLis
     private Button modificarDatosButton;
     private Button cancelarButton;
     private StringValidator validator;
+    private ApiRequests requests;
 
     @Nullable
     @Override
@@ -31,6 +32,7 @@ public class ModificarDatosFragmento extends Fragment implements View.OnClickLis
         modificarDatosView = inflater.inflate( R.layout.modificar_datos_fragment, container, false );
 
         validator = new StringValidator();
+        requests = new ApiRequests();
         modificarDatosButton = ( Button )modificarDatosView.findViewById( R.id.modificar_datos_personales_button );
         cancelarButton = ( Button )modificarDatosView.findViewById( R.id.modificar_cancel_button );
         modificarDatosButton.setOnClickListener( this );
@@ -44,8 +46,9 @@ public class ModificarDatosFragmento extends Fragment implements View.OnClickLis
         switch( view.getId() ) {
             case R.id.modificar_datos_personales_button:
                 checkUserInput();
-                if( validator.isUserUpdateInformationValid( createUser() ) ) {
-                    
+                if( validator.isUserUpdateInformationValid( crearUsuario() ) ) {
+                    requests.actualizarUsuario( getActivity().getBaseContext(), crearUsuario(), LoginSession.getInstance().getAccessToken() );
+                    LoginSession.getInstance().setUsuario( crearUsuario() );
                 }
                 break;
 
@@ -91,7 +94,7 @@ public class ModificarDatosFragmento extends Fragment implements View.OnClickLis
         }
     }
 
-    private Usuario createUser() {
+    private Usuario crearUsuario() {
         return new Usuario( LoginSession.getInstance().getClaveUsuario(), ( (EditText)modificarDatosView.findViewById( R.id.modificar_nombres_text ) ).getText().toString(),
                 ( ( EditText )modificarDatosView.findViewById( R.id.modificar_apellidos_text ) ).getText().toString(),
                 ( ( EditText )modificarDatosView.findViewById( R.id.modificar_correo_text ) ).getText().toString(),

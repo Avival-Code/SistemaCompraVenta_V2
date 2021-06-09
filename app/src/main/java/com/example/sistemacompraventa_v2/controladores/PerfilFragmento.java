@@ -60,6 +60,7 @@ public class PerfilFragmento extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.eliminar_cuenta_button:
+                requests.eliminarUsuario( getActivity().getBaseContext(), LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
                 break;
         }
     }

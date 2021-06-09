@@ -43,7 +43,7 @@ public class ApiRequests {
                         LoginSession.getInstance().login( response.optInt( "clave_usuario" ), response.optString( "access_token" ) );
                         ( ( MainActivity )currentActivity ).setUserMenu();
                         Toast.makeText( currentActivity.getBaseContext(), R.string.login_exitoso, Toast.LENGTH_SHORT ).show();
-                        getUserInfo( currentActivity.getBaseContext(), LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
+                        getUsuario( currentActivity.getBaseContext(), LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
                     } else {
                         Toast.makeText( currentActivity.getBaseContext(), R.string.usuario_no_encontrado, Toast.LENGTH_SHORT ).show();
                     }
@@ -60,7 +60,7 @@ public class ApiRequests {
         }
     }
 
-    public void registerUser( final Context currentContext, final Usuario usuario ) {
+    public void registrarUsuario(final Context currentContext, final Usuario usuario ) {
         RequestQueue request = Volley.newRequestQueue( currentContext );
         try {
             JSONObject payload = objetos.crearObjectoJson( usuario );
@@ -81,7 +81,7 @@ public class ApiRequests {
         }
     }
 
-    public void getUserInfo( final Context currentContext, final int claveUsuario, final String accessToken ) {
+    public void getUsuario(final Context currentContext, final int claveUsuario, final String accessToken ) {
         RequestQueue request = Volley.newRequestQueue( currentContext );
         try {
             String requestURL = usuarioEspecificoURL + claveUsuario;
@@ -96,6 +96,59 @@ public class ApiRequests {
                     } else {
                         Toast.makeText( currentContext, R.string.usuario_no_encontrado, Toast.LENGTH_SHORT ).show();
                     }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse( VolleyError error ) {
+                    Toast.makeText( currentContext, R.string.clave_usuario_no_encontrada, Toast.LENGTH_SHORT ).show();
+                }
+            } ) {
+                @Override
+                public Map< String, String > getHeaders() throws AuthFailureError {
+                    HashMap< String, String > headers = new HashMap< String, String > ();
+                    headers.put( "Authorization", "Bearer " + accessToken );
+                    return headers;
+                }
+            };
+            request.add( objectRequest );
+        } catch( Exception exception ) { exception.printStackTrace(); }
+    }
+
+    public void actualizarUsuario( final Context currentContext, final Usuario usuario, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentContext );
+        try {
+            String requestURL = usuarioEspecificoURL + usuario.getClaveUsuario();
+            JSONObject payload = objetos.crearObjectoJson( usuario );
+            JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.PUT, requestURL, payload, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse( JSONObject response ) {
+                    Toast.makeText( currentContext, R.string.actualizacion_exitosa, Toast.LENGTH_SHORT ).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse( VolleyError error ) {
+                    Toast.makeText( currentContext, R.string.clave_usuario_no_encontrada, Toast.LENGTH_SHORT ).show();
+                }
+            } ) {
+                @Override
+                public Map< String, String > getHeaders() throws AuthFailureError {
+                    HashMap< String, String > headers = new HashMap< String, String > ();
+                    headers.put( "Authorization", "Bearer " + accessToken );
+                    return headers;
+                }
+            };
+            request.add( objectRequest );
+        } catch( Exception exception ) { exception.printStackTrace(); }
+    }
+
+    public void eliminarUsuario( final Context currentContext, final int claveUsuario, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentContext );
+        try {
+            String requestURL = usuarioEspecificoURL + claveUsuario;
+            JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.DELETE, requestURL, null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse( JSONObject response ) {
+                    Toast.makeText( currentContext, R.string.eliminacion_exitosa, Toast.LENGTH_SHORT ).show();
                 }
             }, new Response.ErrorListener() {
                 @Override

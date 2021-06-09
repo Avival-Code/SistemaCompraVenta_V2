@@ -49,6 +49,8 @@
     <string name="login_fracaso">Sucedio un error al momento de iniciar sesion.</string>
     <string name="usuario_no_encontrado">No se encontro el usuario especificado.</string>
     <string name="clave_usuario_no_encontrada">No se encontro el usuario con la clave especificada.</string>
+    <string name="actualizacion_exitosa">Actualizacion de datos exitosa.</string>
+    <string name="eliminacion_exitosa">Tu cuenta se ha eliminado de manera exitosa.</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>

@@ -63,6 +63,7 @@ public class RegistrarFragmento extends Fragment implements View.OnClickListener
         checkNames();
         checkLastNames();
         checkPhone();
+        checkEmail();
         checkUsername();
         checkPassword();
         doPasswordsMatch();
@@ -83,6 +84,12 @@ public class RegistrarFragmento extends Fragment implements View.OnClickListener
     private void checkPhone() {
         if( !validator.IsTelephoneValid( ( ( EditText )registerView.findViewById( R.id.telefono_field ) ).getText().toString() ) ) {
             Toast.makeText( getContext(), R.string.telefono_invalido, Toast.LENGTH_SHORT ).show();
+        }
+    }
+
+    private void checkEmail() {
+        if( !validator.IsEmailValid( ( ( EditText )registerView.findViewById( R.id.correo_field ) ).getText().toString() ) ) {
+            Toast.makeText( getContext(), R.string.correo_invalido, Toast.LENGTH_SHORT ).show();
         }
     }
 

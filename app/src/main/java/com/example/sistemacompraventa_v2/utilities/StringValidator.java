@@ -23,6 +23,11 @@ public class StringValidator {
                 IsPasswordValid( student.getContrasena() ) && DoPasswordsMatch( student.getContrasena(), passwordConfirm );
     }
 
+    public boolean isUserUpdateInformationValid( Usuario usuario ) {
+        return AreNamesValid( usuario.getNombres() ) && AreLastNamesValid( usuario.getApellidos() ) &&
+                IsEmailValid( usuario.getCorreoElectronico() ) && IsTelephoneValid( usuario.getTelefono() );
+    }
+
     public boolean IsLoginInformationValid( String username, String password ) {
         return IsUsernameValid( username ) && IsPasswordValid( password );
     }

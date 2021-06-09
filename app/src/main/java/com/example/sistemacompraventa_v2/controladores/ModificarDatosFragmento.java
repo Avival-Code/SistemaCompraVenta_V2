@@ -49,6 +49,7 @@ public class ModificarDatosFragmento extends Fragment implements View.OnClickLis
                 if( validator.isUserUpdateInformationValid( crearUsuario() ) ) {
                     requests.actualizarUsuario( getActivity().getBaseContext(), crearUsuario(), LoginSession.getInstance().getAccessToken() );
                     LoginSession.getInstance().setUsuario( crearUsuario() );
+                    showPerfilScreen();
                 }
                 break;
 

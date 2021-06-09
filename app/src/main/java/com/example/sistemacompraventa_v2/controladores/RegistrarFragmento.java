@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.utilities.ApiRequests;
@@ -44,6 +45,7 @@ public class RegistrarFragmento extends Fragment implements View.OnClickListener
                 checkUserInput();
                 if( validator.IsUsuarioInformationValid( createUser(), ( ( EditText )registerView.findViewById( R.id.confirmar_contrasena_field ) ).getText().toString() ) ) {
                     requests.registrarUsuario( getActivity().getBaseContext(), createUser() );
+                    showMainScreen();
                 }
                 break;
         }
@@ -110,5 +112,10 @@ public class RegistrarFragmento extends Fragment implements View.OnClickListener
                                          ( ( EditText )registerView.findViewById( R.id.confirmar_contrasena_field ) ).getText().toString() ) ) {
             Toast.makeText( getContext(), R.string.contrasenas_no_coinciden, Toast.LENGTH_SHORT ).show();
         }
+    }
+
+    private void showMainScreen() {
+        final FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace( R.id.Fragment_container, new PrincipalFragmento() ).commit();
     }
 }

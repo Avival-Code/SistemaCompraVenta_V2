@@ -46,7 +46,7 @@
     <string name="usuario_ya_existe">El usuario ya existe.</string>
     <string name="usuario_creado_exito">El usuario fue creado exitosamente.</string>
     <string name="login_exitoso">Inicio de sesion exitosa</string>
-    <string name="login_fracaso">Sucedio un error al momento de iniciar sesion.</string>
+    <string name="login_fracaso">Sucedio un error al momento de iniciar sesion o el usuario no existe.</string>
     <string name="usuario_no_encontrado">No se encontro el usuario especificado.</string>
     <string name="clave_usuario_no_encontrada">No se encontro el usuario con la clave especificada.</string>
     <string name="actualizacion_exitosa">Actualizacion de datos exitosa.</string>

@@ -49,6 +49,13 @@
         </item>
 
         <item
+            android:id="@+id/publicaciones"
+            android:icon="@drawable/ic_baseline_publicaciones_24"
+            android:title="@string/pedidos">
+
+        </item>
+
+        <item
             android:id="@+id/historial"
             android:icon="@drawable/ic_baseline_historial_24"
             android:title="@string/historial">

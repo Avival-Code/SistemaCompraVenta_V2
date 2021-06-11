@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.sistemacompraventa_v2.BuscarActivity;
 import com.example.sistemacompraventa_v2.MainActivity;
 import com.example.sistemacompraventa_v2.R;
+import com.example.sistemacompraventa_v2.controladores.CarritoFragmento;
 import com.example.sistemacompraventa_v2.entidades.Publicacion;
 import com.example.sistemacompraventa_v2.entidades.Usuario;
 import com.example.sistemacompraventa_v2.enumeraciones.Categoria;
@@ -146,7 +149,7 @@ public class ApiRequests {
         }
     }
 
-    public void getArticulosCarrito( final Context currentContext, final int claveUsuario, final String accessToken ) {
+    public void getArticulosCarrito( final Fragment currentFragment, final Context currentContext, final int claveUsuario, final String accessToken ) {
         RequestQueue request = Volley.newRequestQueue( currentContext );
         String requestURL = usuarioEspecificoURL + claveUsuario + "/carritos";
         JsonArrayRequest arrayRequest = new JsonArrayRequest( Request.Method.GET, requestURL, null, new Response.Listener<JSONArray>() {
@@ -161,6 +164,7 @@ public class ApiRequests {
                                 object.getDouble( "calificacion_general" ), object.getString( "unidad_medida" ), object.getInt( "numero_ventas" ),
                                 object.getString( "imagen") ) );
                         LoginSession.getInstance().setArticulosCarrito( publicaciones );
+                        ( ( CarritoFragmento )currentFragment ).setData();
                     } catch( org.json.JSONException json ) {
                         json.printStackTrace();
                     }
@@ -169,6 +173,41 @@ public class ApiRequests {
             @Override
             public void onErrorResponse( VolleyError error ) {
                 Toast.makeText( currentContext, R.string.publicaciones_no_encontradas, Toast.LENGTH_SHORT ).show();
+            }
+        } ) {
+            @Override
+            public Map< String, String > getHeaders() throws AuthFailureError {
+                HashMap< String, String > headers = new HashMap< String, String > ();
+                headers.put( "Authorization", "Bearer " + accessToken );
+                return headers;
+            }
+        };
+        request.add( arrayRequest );
+    }
+
+    public void getArticulosFavoritos( final Activity currentActivity, final int claveUsuario, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentActivity.getBaseContext() );
+        String requestURL = usuarioEspecificoURL + claveUsuario + "/favoritos";
+        JsonArrayRequest arrayRequest = new JsonArrayRequest( Request.Method.GET, requestURL, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse( JSONArray response ) {
+                List< Publicacion > publicaciones = new ArrayList<>();
+                for( int currentObject = 0; currentObject < response.length(); currentObject++ ) {
+                    try {
+                        JSONObject object = response.getJSONObject( currentObject );
+                        publicaciones.add( new Publicacion( object.getInt( "clave_publicacion" ), object.getString( "nombre" ), object.getString( "descripcion" ),
+                                Categoria.values()[ object.getInt( "categoria" ) ], object.getDouble( "precio" ), object.getInt( "cantidad_disponible" ),
+                                object.getDouble( "calificacion_general" ), object.getString( "unidad_medida" ), object.getInt( "numero_ventas" ),
+                                object.getString( "imagen") ) );
+                        LoginSession.getInstance().setArticulosFavoritos( publicaciones );
+                    } catch( org.json.JSONException json ) {
+                        json.printStackTrace();
+                    }
+                }
+            }}, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse( VolleyError error ) {
+                Toast.makeText( currentActivity.getBaseContext(), R.string.publicaciones_no_encontradas, Toast.LENGTH_SHORT ).show();
             }
         } ) {
             @Override

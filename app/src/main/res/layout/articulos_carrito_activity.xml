@@ -7,7 +7,7 @@
     tools:context=".BuscarActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewBuscar"
+        android:id="@+id/recyclerViewCarrito"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

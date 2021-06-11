@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.sistemacompraventa_v2.controladores.CarritoFragmento;
 import com.example.sistemacompraventa_v2.controladores.PerfilFragmento;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.controladores.PrincipalFragmento;
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new PerfilFragmento() ).commit();
                 break;
             case R.id.carritoCompras:
+                getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new CarritoFragmento() ).commit();
                 break;
             case R.id.favoritos:
                 break;

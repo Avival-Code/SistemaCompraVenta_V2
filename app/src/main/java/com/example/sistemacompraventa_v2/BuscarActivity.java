@@ -30,7 +30,7 @@ public class BuscarActivity extends AppCompatActivity {
         publicaciones = new ArrayList<>();
         requests = new ApiRequests();
         requests.getPublicacionesBuscar( this );
-        recyclerView = findViewById( R.id.recyclerView );
+        recyclerView = findViewById( R.id.recyclerViewBuscar);
     }
 
     @Override

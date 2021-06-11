@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new IniciarSesionFragmento() ).commit();
                 break;
             case R.id.buscarProducto:
+                Intent changeActivity = new Intent( this, BuscarActivity.class );
+                startActivity( changeActivity );
                 break;
             case R.id.perfil:
                 getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new PerfilFragmento() ).commit();

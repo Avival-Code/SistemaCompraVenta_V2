@@ -7,9 +7,9 @@ public class Publicacion {
     private String nombre;
     private String descripcion;
     private Categoria categoria;
-    private float precio;
+    private double precio;
     private int cantidad_disponible;
-    private float calificacion_general;
+    private double calificacion_general;
     private String unidad_medida;
     private int numero_ventas;
     private String imagen;
@@ -41,7 +41,7 @@ public class Publicacion {
     }
 
     public Publicacion( int claveIn, String nombreIn, String descripcionIn, Categoria categoriaIn,
-                        float precioIn, int cantidadIn, float calificacionIn, String unidadIn, int ventasIn, String imagenIn  ) {
+                        double precioIn, int cantidadIn, double calificacionIn, String unidadIn, int ventasIn, String imagenIn  ) {
         clave_publicacion = claveIn;
         nombre = nombreIn;
         descripcion = descripcionIn;
@@ -62,11 +62,11 @@ public class Publicacion {
 
     public Categoria getCategoria() { return categoria; }
 
-    public float getPrecio() { return precio; }
+    public double getPrecio() { return precio; }
 
     public int getCantidad_disponible() { return cantidad_disponible; }
 
-    public float getCalificacion_general() { return calificacion_general; }
+    public double getCalificacion_general() { return calificacion_general; }
 
     public String getUnidad_medida() { return unidad_medida; }
 
@@ -80,11 +80,11 @@ public class Publicacion {
 
     public void setCategoria( Categoria categoriaIn ) { categoria = categoriaIn; }
 
-    public void setPrecio( float precioIn ) { precio = precioIn; }
+    public void setPrecio( double precioIn ) { precio = precioIn; }
 
     public void setCantidad_disponible( int cantidad_disponibleIn ) { cantidad_disponible = cantidad_disponibleIn; }
 
-    public void setCalificacion_general( float calificacion_generalIn ) { calificacion_general = calificacion_generalIn; }
+    public void setCalificacion_general( double calificacion_generalIn ) { calificacion_general = calificacion_generalIn; }
 
     public void setUnidad_medida( String unidad_medidaIn ) { unidad_medida = unidad_medidaIn; }
 

@@ -49,6 +49,17 @@
     <string name="confirmar_contrasena">Confirmar Contraseña</string>
     <string name="realizarRegistro">Realizar Registro</string>
 
+    <!--Cadenas de la actividad "detalles_activity"-->
+    <string name="agregar_carrito_button">Agregar a Carrito</string>
+    <string name="agregar_favoritos_button">Agregar a Favoritos</string>
+    <string name="realizar_pregunta_button">Realizar Pregunta</string>
+
+    <!--Cadenas de la actividad "DetallesPublicacionActivity"-->
+    <string name="no_hay_datos">No hay datos que mostrar.</string>
+    <string name="precio_detalles">Precio:</string>
+    <string name="calificacion_detalles">Calificacion:</string>
+    <string name="cantidad_detalles">Cantidad:</string>
+
     <!--Cadenas de respuesta para la clase "ApiRequest.java"-->
     <string name="usuario_ya_existe">El usuario ya existe.</string>
     <string name="usuario_creado_exito">El usuario fue creado exitosamente.</string>
@@ -58,6 +69,7 @@
     <string name="clave_usuario_no_encontrada">No se encontro el usuario con la clave especificada.</string>
     <string name="actualizacion_exitosa">Actualizacion de datos exitosa.</string>
     <string name="eliminacion_exitosa">Tu cuenta se ha eliminado de manera exitosa.</string>
+    <string name="publicaciones_no_encontradas">No se encontraron publicaciones o ocurrio un error.</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>

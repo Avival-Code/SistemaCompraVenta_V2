@@ -13,7 +13,7 @@
     <string name="favoritos">Favoritos</string>
     <string name="historial">Historial</string>
     <string name="pedidos">Pedidos</string>
-    <string name="publicaciones">Pubblicaciones</string>
+    <string name="publicaciones">Publicaciones</string>
 
     <!--Cadenas de las tarjetas utilizadas para mostrar publicaciones de busqueda-->
     <string name="contenidoImagen">Publicacion</string>
@@ -71,8 +71,10 @@
     <string name="actualizacion_exitosa">Actualizacion de datos exitosa.</string>
     <string name="eliminacion_exitosa">Tu cuenta se ha eliminado de manera exitosa.</string>
     <string name="publicaciones_no_encontradas">No se encontraron publicaciones o ocurrio un error.</string>
-    <string name="agregar_favorito_exitoso">Se agrego exitosamente el favorito.</string>
-    <string name="agregar_favorito_fracaso">No se pudo agregar el favorito.</string>
+    <string name="agregar_favorito_exitoso">Se agrego exitosamente a la lista de favoritos.</string>
+    <string name="agregar_favorito_fracaso">La publicacion ya esta en la lista de favoritos o ocurrio un error.</string>
+    <string name="agregar_carrito_exitoso">Se agrego exitosamente al carrito de compras.</string>
+    <string name="agregar_carrito_fracaso">La publicacion ya esta en el carrito de compra o ocurrio un error.</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>

@@ -51,7 +51,7 @@
         <item
             android:id="@+id/publicaciones"
             android:icon="@drawable/ic_baseline_publicaciones_24"
-            android:title="@string/pedidos">
+            android:title="@string/publicaciones">
 
         </item>
 

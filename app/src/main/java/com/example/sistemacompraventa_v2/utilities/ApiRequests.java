@@ -279,7 +279,37 @@ public class ApiRequests {
     }
 
     public void getArticulosCarrito( final Context currentContext, final int claveUsuario, final String accessToken ) {
-
+        RequestQueue request = Volley.newRequestQueue( currentContext );
+        String requestURL = usuarioEspecificoURL + claveUsuario + "/carritos";
+        JsonArrayRequest arrayRequest = new JsonArrayRequest( Request.Method.GET, requestURL, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse( JSONArray response ) {
+                List< Publicacion > publicaciones = new ArrayList<>();
+                for( int currentObject = 0; currentObject < response.length(); currentObject++ ) {
+                    try {
+                        JSONObject object = response.getJSONObject( currentObject );
+                        publicaciones.add( new Publicacion( object.getInt( "clave_publicacion" ), object.getString( "nombre" ), object.getString( "descripcion" ),
+                                Categoria.values()[ object.getInt( "categoria" ) ], object.getDouble( "precio" ), object.getInt( "cantidad_disponible" ),
+                                object.getDouble( "calificacion_general" ), object.getString( "unidad_medida" ), object.getInt( "numero_ventas" ),
+                                object.getString( "imagen") ) );
+                    } catch( org.json.JSONException json ) {
+                        json.printStackTrace();
+                    }
+                }
+            }}, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse( VolleyError error ) {
+                Toast.makeText( currentContext, R.string.publicaciones_no_encontradas, Toast.LENGTH_SHORT ).show();
+            }
+        } ) {
+            @Override
+            public Map< String, String > getHeaders() throws AuthFailureError {
+                HashMap< String, String > headers = new HashMap< String, String > ();
+                headers.put( "Authorization", "Bearer " + accessToken );
+                return headers;
+            }
+        };
+        request.add( arrayRequest );
     }
 
     public void getUsuario( final Context currentContext, final int claveUsuario, final String accessToken ) {

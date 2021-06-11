@@ -95,4 +95,11 @@
     <string name="modificar_datos_titulo">Modificar Datos Personales</string>
     <string name="modificar_datos_personales_button">Modificar Datos</string>
     <string name="cancelar_button">Cancelar</string>
+
+    <!--Cadenas del layout "carrito_activity"-->
+    <string name="articulos_carrito">Ver Articulos en Carrito</string>
+    <string name="realizar_pedido">Realizar Pedido</string>
+    <string name="titulo_carrito">Carrito de Compras</string>
+    <string name="subtotal_carrito">Subtotal:</string>
+    <string name="numero_articulos_carrito">Numero de Articulos:</string>
 </resources>

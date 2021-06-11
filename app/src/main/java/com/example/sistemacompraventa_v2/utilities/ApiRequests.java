@@ -278,6 +278,10 @@ public class ApiRequests {
         }
     }
 
+    public void getArticulosCarrito( final Context currentContext, final int claveUsuario, final String accessToken ) {
+
+    }
+
     public void getUsuario( final Context currentContext, final int claveUsuario, final String accessToken ) {
         RequestQueue request = Volley.newRequestQueue( currentContext );
         try {

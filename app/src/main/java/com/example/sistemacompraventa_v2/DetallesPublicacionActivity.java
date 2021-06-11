@@ -52,10 +52,19 @@ public class DetallesPublicacionActivity extends AppCompatActivity implements Vi
     public void onClick( View view ) {
         switch( view.getId() ) {
             case R.id.agregarCarritoButton:
+                if( LoginSession.getInstance().isLoggedIn() ) {
+                    requests.agregarACarrito( getBaseContext(), LoginSession.getInstance().getClaveUsuario(), publicacion.getClave_publicacion(), LoginSession.getInstance().getAccessToken() );
+                } else {
+                    Toast.makeText( this, R.string.inicio_sesion_requerida, Toast.LENGTH_SHORT ).show();
+                }
                 break;
 
             case R.id.agregarFavoritosButton:
-                requests.agregarAFavorito( getBaseContext(), LoginSession.getInstance().getClaveUsuario(), publicacion.getClave_publicacion() );
+                if( LoginSession.getInstance().isLoggedIn() ) {
+                    requests.agregarAFavorito( getBaseContext(), LoginSession.getInstance().getClaveUsuario(), publicacion.getClave_publicacion(), LoginSession.getInstance().getAccessToken() );
+                } else {
+                    Toast.makeText( this, R.string.inicio_sesion_requerida, Toast.LENGTH_SHORT ).show();
+                }
                 break;
         }
     }

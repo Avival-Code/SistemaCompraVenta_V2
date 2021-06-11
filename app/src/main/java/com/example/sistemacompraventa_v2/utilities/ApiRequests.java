@@ -220,12 +220,12 @@ public class ApiRequests {
         }
     }
 
-    public void agregarAFavorito( final Context currentContext, final int claveUsuario, final int clavePublicacion ) {
+    public void agregarAFavorito( final Context currentContext, final int claveUsuario, final int clavePublicacion, final String accessToken ) {
         RequestQueue request = Volley.newRequestQueue( currentContext );
         try {
             String requestURL = usuarioEspecificoURL + claveUsuario + "/favoritos";
             JSONObject payload = objetos.crearObjetoJson( claveUsuario, clavePublicacion );
-            JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, requestURL, payload, new Response.Listener<JSONObject>() {
+            JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.POST, requestURL, payload, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     Toast.makeText( currentContext, R.string.agregar_favorito_exitoso, Toast.LENGTH_SHORT ).show();
@@ -235,7 +235,43 @@ public class ApiRequests {
                 public void onErrorResponse(VolleyError error) {
                     Toast.makeText( currentContext, R.string.agregar_favorito_fracaso, Toast.LENGTH_SHORT ).show();
                 }
-            });
+            }) {
+                @Override
+                public Map< String, String > getHeaders() throws AuthFailureError {
+                    HashMap< String, String > headers = new HashMap< String, String > ();
+                    headers.put( "Authorization", "Bearer " + accessToken );
+                    return headers;
+                }
+            };
+            request.add( objectRequest );
+        } catch( org.json.JSONException json ) {
+            json.printStackTrace();
+        }
+    }
+
+    public void agregarACarrito( final Context currentContext, final int claveUsuario, final int clavePublicacion, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentContext );
+        try {
+            String requestURL = usuarioEspecificoURL + claveUsuario + "/carritos";
+            JSONObject payload = objetos.crearObjetoJson( claveUsuario, clavePublicacion );
+            JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.POST, requestURL, payload, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Toast.makeText( currentContext, R.string.agregar_favorito_exitoso, Toast.LENGTH_SHORT ).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText( currentContext, R.string.agregar_favorito_fracaso, Toast.LENGTH_SHORT ).show();
+                }
+            } ) {
+                @Override
+                public Map< String, String > getHeaders() throws AuthFailureError {
+                    HashMap< String, String > headers = new HashMap< String, String > ();
+                    headers.put( "Authorization", "Bearer " + accessToken );
+                    return headers;
+                }
+            };
             request.add( objectRequest );
         } catch( org.json.JSONException json ) {
             json.printStackTrace();

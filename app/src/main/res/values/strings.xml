@@ -59,6 +59,7 @@
     <string name="precio_detalles">Precio:</string>
     <string name="calificacion_detalles">Calificacion:</string>
     <string name="cantidad_detalles">Cantidad:</string>
+    <string name="inicio_sesion_requerida">Debes iniciar sesion para poder realizar esta accion.</string>
 
     <!--Cadenas de respuesta para la clase "ApiRequest.java"-->
     <string name="usuario_ya_existe">El usuario ya existe.</string>

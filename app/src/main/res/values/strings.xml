@@ -70,6 +70,8 @@
     <string name="actualizacion_exitosa">Actualizacion de datos exitosa.</string>
     <string name="eliminacion_exitosa">Tu cuenta se ha eliminado de manera exitosa.</string>
     <string name="publicaciones_no_encontradas">No se encontraron publicaciones o ocurrio un error.</string>
+    <string name="agregar_favorito_exitoso">Se agrego exitosamente el favorito.</string>
+    <string name="agregar_favorito_fracaso">No se pudo agregar el favorito.</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>

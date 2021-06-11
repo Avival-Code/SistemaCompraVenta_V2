@@ -11,8 +11,11 @@ import android.widget.Toast;
 
 import com.example.sistemacompraventa_v2.entidades.Publicacion;
 import com.example.sistemacompraventa_v2.enumeraciones.Categoria;
+import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
+import com.example.sistemacompraventa_v2.utilities.ApiRequests;
 
 public class DetallesPublicacionActivity extends AppCompatActivity implements View.OnClickListener {
+    private ApiRequests requests;
     private TextView titulo;
     private TextView descripcion;
     private TextView precio;
@@ -28,6 +31,7 @@ public class DetallesPublicacionActivity extends AppCompatActivity implements Vi
         super.onCreate(savedInstanceState);
         setContentView( R.layout.detalles_activity );
 
+        requests = new ApiRequests();
         titulo = findViewById( R.id.titulo_detalles );
         descripcion = findViewById( R.id.descripcion_detalles );
         precio = findViewById( R.id.precio_detalles );
@@ -51,6 +55,7 @@ public class DetallesPublicacionActivity extends AppCompatActivity implements Vi
                 break;
 
             case R.id.agregarFavoritosButton:
+                requests.agregarAFavorito( getBaseContext(), LoginSession.getInstance().getClaveUsuario(), publicacion.getClave_publicacion() );
                 break;
         }
     }

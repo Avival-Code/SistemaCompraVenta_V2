@@ -24,4 +24,11 @@ public class ObjetosJson {
         objeto.put( "password", password );
         return objeto;
     }
+
+    public JSONObject crearObjetoJson( int claveUsuario, int clavePublicacion ) throws org.json.JSONException {
+        JSONObject objeto = new JSONObject();
+        objeto.put( "clave_usuario_usuario", claveUsuario );
+        objeto.put( "clave_producto_producto", clavePublicacion );
+        return objeto;
+    }
 }

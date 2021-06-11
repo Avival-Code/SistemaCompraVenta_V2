@@ -220,6 +220,28 @@ public class ApiRequests {
         }
     }
 
+    public void agregarAFavorito( final Context currentContext, final int claveUsuario, final int clavePublicacion ) {
+        RequestQueue request = Volley.newRequestQueue( currentContext );
+        try {
+            String requestURL = usuarioEspecificoURL + claveUsuario + "/favoritos";
+            JSONObject payload = objetos.crearObjetoJson( claveUsuario, clavePublicacion );
+            JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, requestURL, payload, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Toast.makeText( currentContext, R.string.agregar_favorito_exitoso, Toast.LENGTH_SHORT ).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText( currentContext, R.string.agregar_favorito_fracaso, Toast.LENGTH_SHORT ).show();
+                }
+            });
+            request.add( objectRequest );
+        } catch( org.json.JSONException json ) {
+            json.printStackTrace();
+        }
+    }
+
     public void getUsuario( final Context currentContext, final int claveUsuario, final String accessToken ) {
         RequestQueue request = Volley.newRequestQueue( currentContext );
         try {

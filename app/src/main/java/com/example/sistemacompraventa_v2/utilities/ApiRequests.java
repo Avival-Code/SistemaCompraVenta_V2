@@ -38,139 +38,7 @@ public class ApiRequests {
     private ObjetosJson objetos = null;
 
     public ApiRequests() { objetos = new ObjetosJson(); }
-/*
-    public void login( final Activity currentActivity, final String usuario, final String contrasena ) {
-        threads.post( new LoginRequest( currentActivity, usuario, contrasena ) );
-    }
 
-    public void getUsuario( final Context currentContext, final int claveUsuario, final String accessToken ) {
-        threads.post( new GetUsuario( currentContext, claveUsuario, accessToken ) );
-    }
-
-    static class LoginRequest implements Runnable {
-        private Activity currentActivity;
-        private ObjetosJson objetos = null;
-        private String loginURL = "http://201.105.180.242:5000/login";
-        private String usuarioEspecificoURL = "http://201.105.180.242:5000/usuarios/";
-        private String usuario;
-        private String contrasena;
-
-        public LoginRequest( Activity sourceActivity, String usuarioIn, String contrasenaIn ) {
-            currentActivity = sourceActivity;
-            usuario = usuarioIn;
-            contrasena = contrasenaIn;
-            objetos = new ObjetosJson();
-        }
-
-        @Override
-        public void run() {
-            RequestQueue request = Volley.newRequestQueue( currentActivity.getBaseContext() );
-            try {
-                JSONObject payload = objetos.crearObjetoJson( usuario, contrasena );
-                JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.POST, loginURL, payload, new Response.Listener< JSONObject >() {
-                    @Override
-                    public void onResponse( JSONObject response ) {
-                        if( response != null ) {
-                            LoginSession.getInstance().login( response.optInt( "clave_usuario" ), response.optString( "access_token" ) );
-                            ( ( MainActivity )currentActivity ).setUserMenu();
-                            Toast.makeText( currentActivity.getBaseContext(), R.string.login_exitoso, Toast.LENGTH_SHORT ).show();
-                            //getUsuario( currentActivity.getBaseContext(), LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
-                        } else {
-                            Toast.makeText( currentActivity.getBaseContext(), R.string.usuario_no_encontrado, Toast.LENGTH_SHORT ).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse( VolleyError error ) {
-                        Toast.makeText( currentActivity.getBaseContext(), R.string.login_fracaso, Toast.LENGTH_SHORT ).show();
-                    }
-                } );
-                request.add( objectRequest );
-            } catch( org.json.JSONException json ) {
-                json.printStackTrace();
-            }
-        }
-
-        public void getUsuario( final Context currentContext, final int claveUsuario, final String accessToken ) {
-            RequestQueue request = Volley.newRequestQueue( currentContext );
-            try {
-                String requestURL = usuarioEspecificoURL + claveUsuario;
-                JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.GET, requestURL, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse( JSONObject response ) {
-                        if( response != null ) {
-                            Usuario temp = new Usuario( response.optInt( "clave_usuario" ), response.optString( "nombres" ), response.optString( "apellidos" ),
-                                    response.optString( "correo_electronico" ), response.optString("telefono" ), response.optString( "nombre_usuario" ),
-                                    response.optString( "contrasena" ), ( float )response.optDouble( "calificacion" ), TipoUsuario.values() [ response.optInt( "tipo_usuario" ) ] );
-                            LoginSession.getInstance().setUsuario( temp );
-                        } else {
-                            Toast.makeText( currentContext, R.string.usuario_no_encontrado, Toast.LENGTH_SHORT ).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse( VolleyError error ) {
-                        Toast.makeText( currentContext, R.string.clave_usuario_no_encontrada, Toast.LENGTH_SHORT ).show();
-                    }
-                } ) {
-                    @Override
-                    public Map< String, String > getHeaders() throws AuthFailureError {
-                        HashMap< String, String > headers = new HashMap< String, String > ();
-                        headers.put( "Authorization", "Bearer " + accessToken );
-                        return headers;
-                    }
-                };
-                request.add( objectRequest );
-            } catch( Exception exception ) { exception.printStackTrace(); }
-        }
-    }
-
-    static class GetUsuario implements Runnable {
-        private Context currentContext;
-        private int claveUsuario;
-        private String usuarioEspecificoURL = "http://192.168.1.68:5000/usuarios/";
-        private String accessToken;
-
-        public GetUsuario( Context currentContextIn, int claveUsuarioIn, String accessTokenIn ) {
-            currentContext = currentContextIn;
-            claveUsuario = claveUsuarioIn;
-            accessToken = accessTokenIn;
-        }
-        @Override
-        public void run() {
-            RequestQueue request = Volley.newRequestQueue( currentContext );
-            try {
-                String requestURL = usuarioEspecificoURL + claveUsuario;
-                JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.GET, requestURL, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse( JSONObject response ) {
-                        if( response != null ) {
-                            Usuario temp = new Usuario( response.optInt( "clave_usuario" ), response.optString( "nombres" ), response.optString( "apellidos" ),
-                                    response.optString( "correo_electronico" ), response.optString("telefono" ), response.optString( "nombre_usuario" ),
-                                    response.optString( "contrasena" ), ( float )response.optDouble( "calificacion" ), TipoUsuario.values() [ response.optInt( "tipo_usuario" ) ] );
-                            LoginSession.getInstance().setUsuario( temp );
-                        } else {
-                            Toast.makeText( currentContext, R.string.usuario_no_encontrado, Toast.LENGTH_SHORT ).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse( VolleyError error ) {
-                        Toast.makeText( currentContext, R.string.clave_usuario_no_encontrada, Toast.LENGTH_SHORT ).show();
-                    }
-                } ) {
-                    @Override
-                    public Map< String, String > getHeaders() throws AuthFailureError {
-                        HashMap< String, String > headers = new HashMap< String, String > ();
-                        headers.put( "Authorization", "Bearer " + accessToken );
-                        return headers;
-                    }
-                };
-                request.add( objectRequest );
-            } catch( Exception exception ) { exception.printStackTrace(); }
-        }
-    }
- */
     public void login( final Activity currentActivity, final String usuario, final String contrasena ) {
         RequestQueue request = Volley.newRequestQueue( currentActivity.getBaseContext() );
         try {
@@ -292,6 +160,7 @@ public class ApiRequests {
                                 Categoria.values()[ object.getInt( "categoria" ) ], object.getDouble( "precio" ), object.getInt( "cantidad_disponible" ),
                                 object.getDouble( "calificacion_general" ), object.getString( "unidad_medida" ), object.getInt( "numero_ventas" ),
                                 object.getString( "imagen") ) );
+                        LoginSession.getInstance().setArticulosCarrito( publicaciones );
                     } catch( org.json.JSONException json ) {
                         json.printStackTrace();
                     }

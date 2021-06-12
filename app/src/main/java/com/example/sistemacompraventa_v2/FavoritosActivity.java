@@ -7,18 +7,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.sistemacompraventa_v2.adaptadores.AdaptadorCarrito;
+import com.example.sistemacompraventa_v2.adaptadores.AdaptadorFavorito;
+import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
+import com.example.sistemacompraventa_v2.utilities.ApiRequests;
 
-public class CarritoArticulosActivity extends AppCompatActivity {
+public class FavoritosActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private AdaptadorCarrito adaptador;
+    private AdaptadorFavorito adaptador;
+    private ApiRequests requests;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.articulos_carrito_activity );
+        setContentView( R.layout.favoritos_activity );
 
-        recyclerView = findViewById( R.id.recyclerViewCarrito );
-        setArticulosCarrito();
+        requests = new ApiRequests();
+        recyclerView = findViewById( R.id.recyclerViewFavoritos );
+        requests.getArticulosFavoritos( this, LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
     }
 
     @Override
@@ -28,7 +33,7 @@ public class CarritoArticulosActivity extends AppCompatActivity {
     }
 
     public void setArticulosCarrito() {
-        adaptador = new AdaptadorCarrito( this );
+        adaptador = new AdaptadorFavorito( this );
         recyclerView.setAdapter( adaptador );
         recyclerView.setLayoutManager( new LinearLayoutManager( this ) );
     }

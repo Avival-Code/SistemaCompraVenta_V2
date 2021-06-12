@@ -61,6 +61,12 @@
     <string name="cantidad_detalles">Cantidad:</string>
     <string name="inicio_sesion_requerida">Debes iniciar sesion para poder realizar esta accion.</string>
 
+    <!--Cadenas de la actividad "VisualizarArticulosCarrito"-->
+    <string name="precio_carrito">Precio:</string>
+    <string name="calificacion_carrito">Calificacion:</string>
+    <string name="cantidad_carrito">Cantidad:</string>
+    <string name="eliminar_carrito_button">Eliminar de Carrito de Compras</string>
+
     <!--Cadenas de respuesta para la clase "ApiRequest.java"-->
     <string name="usuario_ya_existe">El usuario ya existe.</string>
     <string name="usuario_creado_exito">El usuario fue creado exitosamente.</string>
@@ -75,6 +81,10 @@
     <string name="agregar_favorito_fracaso">La publicacion ya esta en la lista de favoritos o ocurrio un error.</string>
     <string name="agregar_carrito_exitoso">Se agrego exitosamente al carrito de compras.</string>
     <string name="agregar_carrito_fracaso">La publicacion ya esta en el carrito de compra o ocurrio un error.</string>
+    <string name="eliminar_articulo_carrito_exito">Se elimino el articulo del carrito.</string>
+    <string name="eliminar_articulo_carrito_fracaso">No se pudo eliminar el articulo del carrito.</string>
+    <string name="eliminar_articulo_favorito_exito">Se elimino el articulo de tus favoritos exitosamente.</string>
+    <string name="eliminar_articulo_favorito_fracaso">No se pudo eliminar el articulo de tus favoritos.</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>
@@ -90,6 +100,9 @@
     <string name="agregar_domicilio_button">Agregar Domicilio</string>
     <string name="perfil_imageview">perfil_image</string>
     <string name="eliminar_cuenta">Eliminar Cuenta</string>
+
+    <!--Cadenas de actividad "visualizarfavorito_activity"-->
+    <string name="eliminar_favorito_button">Eliminar de Favoritos</string>
 
     <!--Cadenas del fragmento "modificar_datos_fragment-->
     <string name="modificar_datos_titulo">Modificar Datos Personales</string>

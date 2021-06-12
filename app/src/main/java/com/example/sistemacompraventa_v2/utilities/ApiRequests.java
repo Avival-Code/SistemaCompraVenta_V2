@@ -15,6 +15,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sistemacompraventa_v2.BuscarActivity;
+import com.example.sistemacompraventa_v2.FavoritosActivity;
 import com.example.sistemacompraventa_v2.MainActivity;
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.controladores.CarritoFragmento;
@@ -185,6 +186,54 @@ public class ApiRequests {
         request.add( arrayRequest );
     }
 
+    public void eliminarArticuloCarrito( final Context currentContext, final int claveUsuario, final int clavePublicacion, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentContext );
+        String requestURL = usuarioEspecificoURL + claveUsuario + "/carritos/" + clavePublicacion;
+        JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.DELETE, requestURL, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText( currentContext, R.string.eliminar_articulo_carrito_exito, Toast.LENGTH_SHORT ).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText( currentContext, R.string.eliminar_articulo_carrito_fracaso, Toast.LENGTH_SHORT ).show();
+            }
+        } ) {
+            @Override
+            public Map< String, String > getHeaders() throws AuthFailureError {
+                HashMap< String, String > headers = new HashMap< String, String > ();
+                headers.put( "Authorization", "Bearer " + accessToken );
+                return headers;
+            }
+        };
+        request.add( objectRequest );
+    }
+
+    public void eliminarArticuloFavorito( final Context currentContext, final int claveUsuario, final int clavePublicacion, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentContext );
+        String requestURL = usuarioEspecificoURL + claveUsuario + "/favoritos/" + clavePublicacion;
+        JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.DELETE, requestURL, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText( currentContext, R.string.eliminar_articulo_carrito_exito, Toast.LENGTH_SHORT ).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText( currentContext, R.string.eliminar_articulo_carrito_fracaso, Toast.LENGTH_SHORT ).show();
+            }
+        } ) {
+            @Override
+            public Map< String, String > getHeaders() throws AuthFailureError {
+                HashMap< String, String > headers = new HashMap< String, String > ();
+                headers.put( "Authorization", "Bearer " + accessToken );
+                return headers;
+            }
+        };
+        request.add( objectRequest );
+    }
+
     public void getArticulosFavoritos( final Activity currentActivity, final int claveUsuario, final String accessToken ) {
         RequestQueue request = Volley.newRequestQueue( currentActivity.getBaseContext() );
         String requestURL = usuarioEspecificoURL + claveUsuario + "/favoritos";
@@ -200,6 +249,7 @@ public class ApiRequests {
                                 object.getDouble( "calificacion_general" ), object.getString( "unidad_medida" ), object.getInt( "numero_ventas" ),
                                 object.getString( "imagen") ) );
                         LoginSession.getInstance().setArticulosFavoritos( publicaciones );
+                        ( ( FavoritosActivity )currentActivity ).setArticulosCarrito();
                     } catch( org.json.JSONException json ) {
                         json.printStackTrace();
                     }

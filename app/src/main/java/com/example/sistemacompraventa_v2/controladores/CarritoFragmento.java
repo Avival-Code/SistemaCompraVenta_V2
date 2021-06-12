@@ -45,6 +45,12 @@ public class CarritoFragmento extends Fragment implements View.OnClickListener{
         return carritoView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setData();
+    }
+
 
     @Override
     public void onClick( View view ) {

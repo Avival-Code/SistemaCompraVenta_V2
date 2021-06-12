@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new IniciarSesionFragmento() ).commit();
                 break;
             case R.id.buscarProducto:
-                Intent changeActivity = new Intent( this, BuscarActivity.class );
-                startActivity( changeActivity );
+                Intent cambiarABuscarActivity = new Intent( this, BuscarActivity.class );
+                startActivity( cambiarABuscarActivity );
                 break;
             case R.id.perfil:
                 getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new PerfilFragmento() ).commit();
@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new CarritoFragmento() ).commit();
                 break;
             case R.id.favoritos:
+                Intent cambiarAFavoritosActivity = new Intent( this, FavoritosActivity.class );
+                startActivity( cambiarAFavoritosActivity );
                 break;
             case R.id.pedidos:
                 break;

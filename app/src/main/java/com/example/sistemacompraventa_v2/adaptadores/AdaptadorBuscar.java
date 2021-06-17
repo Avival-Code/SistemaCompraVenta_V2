@@ -38,7 +38,7 @@ public class AdaptadorBuscar extends RecyclerView.Adapter< AdaptadorBuscar.MyVie
     public MyViewHolder onCreateViewHolder( @NonNull ViewGroup parent, int viewType ) {
         LayoutInflater inflater = LayoutInflater.from( viewContext );
         View view = inflater.inflate( R.layout.card_row, parent, false );
-        return new MyViewHolder( view );
+        return new AdaptadorBuscar.MyViewHolder( view );
     }
 
     @Override
@@ -47,9 +47,9 @@ public class AdaptadorBuscar extends RecyclerView.Adapter< AdaptadorBuscar.MyVie
         holder.descripcion.setText( publicaciones.get( position ).getDescripcion() );
         holder.precio.setText( Double.toString( publicaciones.get( position ).getPrecio() ) );
 
-        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+        holder.mainLayout.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick( View v ) {
                 Intent intent = new Intent( viewContext, DetallesPublicacionActivity.class );
                 intent.putExtra( "clave_publicacion", publicaciones.get( position ).getClave_publicacion() );
                 intent.putExtra( "nombre", publicaciones.get( position ).getNombre() );
@@ -63,7 +63,7 @@ public class AdaptadorBuscar extends RecyclerView.Adapter< AdaptadorBuscar.MyVie
                 intent.putExtra( "imagen", publicaciones.get( position ).getImagen() );
                 viewContext.startActivity( intent );
             }
-        });
+        } );
     }
 
     @Override

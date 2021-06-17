@@ -1,6 +1,7 @@
 package com.example.sistemacompraventa_v2.sesionusuario;
 
 import com.example.sistemacompraventa_v2.entidades.Publicacion;
+import com.example.sistemacompraventa_v2.entidades.Transaccion;
 import com.example.sistemacompraventa_v2.entidades.Usuario;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ public final class LoginSession {
     private static LoginSession loginInstance;
     private List< Publicacion > articulosCarrito;
     private List< Publicacion > articulosFavoritos;
+    private List< Transaccion > transaccionesUsuario;
     private Usuario usuario;
     private int claveUsuario;
     private String accessToken;
@@ -17,6 +19,7 @@ public final class LoginSession {
     private LoginSession() {
         articulosCarrito = null;
         articulosFavoritos = null;
+        transaccionesUsuario = null;
         usuario = null;
         claveUsuario = -1;
         accessToken = "";
@@ -75,6 +78,10 @@ public final class LoginSession {
             }
         }
     }
+
+    public List< Transaccion > getTransaccionesUsuario() { return transaccionesUsuario; }
+
+    public void setTransaccionesUsuario( List< Transaccion > transaccionesIn ) { transaccionesUsuario = transaccionesIn; }
 
     public int getClaveUsuario() { return claveUsuario; }
 

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.entidades.Transaccion;
+import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -23,9 +24,9 @@ public class AdaptadorTransacciones extends RecyclerView.Adapter< AdaptadorTrans
     Context viewContext;
     private List< Transaccion > transacciones;
 
-    public AdaptadorTransacciones( Context contextIn, List< Transaccion > transaccionesIn ) {
+    public AdaptadorTransacciones( Context contextIn ) {
         viewContext = contextIn;
-        transacciones = transaccionesIn;
+        transacciones = LoginSession.getInstance().getTransaccionesUsuario();
     }
 
     @NonNull

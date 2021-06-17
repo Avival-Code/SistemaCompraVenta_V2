@@ -21,6 +21,10 @@
     <string name="descripcionText">Descripcion</string>
     <string name="precioText">Precio</string>
 
+    <!--Cadenas de las tarjetas utilizadas par mostrar transacciones del usuario-->
+    <string name="fecha_transaccion_card">Fecha de Transaccion:</string>
+    <string name="total_transaccion_card">Total:</string>
+
     <!--Cadenas de el encabezado de navegacion-->
     <string name="sistema_cv">Sistema de Compra Venta</string>
     <string name="mensaje_bienvenida">Bienvenido!</string>

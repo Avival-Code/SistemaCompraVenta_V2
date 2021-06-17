@@ -13,7 +13,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sistemacompraventa_v2.R;
-import com.example.sistemacompraventa_v2.VisualizarArticuloCarrito;
 import com.example.sistemacompraventa_v2.VisualizarFavoritoActivity;
 import com.example.sistemacompraventa_v2.entidades.Publicacion;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;

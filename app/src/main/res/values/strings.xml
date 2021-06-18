@@ -114,6 +114,7 @@
     <string name="fecha_venta">Fecha de Venta:</string>
     <string name="total_transaccion">Precio Total:</string>
     <string name="evaluar_usuario_button">Evaluar Usuario</string>
+    <string name="usuario_ya_esta_evaluado">Ya has evaluado el usuario.</string>
 
     <!--Cadenas de actividad "evaluar_usuario_activity"-->
     <string name="evaluacion_titulo">Evaluacion de Usuario</string>

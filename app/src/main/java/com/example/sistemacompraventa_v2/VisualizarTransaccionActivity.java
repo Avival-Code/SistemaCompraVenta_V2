@@ -61,9 +61,13 @@ public class VisualizarTransaccionActivity extends AppCompatActivity implements 
     public void onClick( View view ) {
         switch( view.getId() ) {
             case R.id.evaluarUsuarioButton:
-                Intent intent = new Intent( getBaseContext(), EvaluarUsuarioActivity.class );
-                intent.putExtra( "clave_vendedor", transaccion.getClaveVendedor() );
-                getBaseContext().startActivity( intent );
+                if( !transaccion.getEvaluado() ) {
+                    Intent intent = new Intent( getBaseContext(), EvaluarUsuarioActivity.class );
+                    intent.putExtra( "clave_vendedor", transaccion.getClaveVendedor() );
+                    getBaseContext().startActivity( intent );
+                } else {
+                    Toast.makeText( this, R.string.usuario_ya_esta_evaluado, Toast.LENGTH_SHORT ).show();
+                }
                 break;
         }
     }

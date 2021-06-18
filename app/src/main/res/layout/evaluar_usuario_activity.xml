@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/contenidoEvaluacion"
         android:layout_width="274dp"
         android:layout_height="222dp"
         android:layout_marginTop="53dp"
@@ -34,24 +34,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/mandarEvaluacionUsuarioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="152dp"
         android:text="@string/mandar_evaluacion_boton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+        app:layout_constraintTop_toBottomOf="@+id/contenidoEvaluacion" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="@string/cancelar_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

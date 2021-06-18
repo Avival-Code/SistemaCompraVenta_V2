@@ -41,7 +41,7 @@ public class AdaptadorTransaccion extends RecyclerView.Adapter< AdaptadorTransac
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull AdaptadorTransaccion.MyViewHolder holder, int position ) {
+    public void onBindViewHolder(@NonNull @NotNull AdaptadorTransaccion.MyViewHolder holder, final int position ) {
         holder.claveTransaccion.setText( transacciones.get( position ).getClaveTransaccion() );
         holder.fecha.setText( transacciones.get( position ).getFecha() );
         holder.total.setText( Double.toString( transacciones.get( position ).getTotal() ) );

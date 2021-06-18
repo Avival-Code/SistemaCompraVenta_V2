@@ -40,7 +40,7 @@ public class AdaptadorCarrito extends RecyclerView.Adapter< AdaptadorCarrito.MyV
     }
 
     @Override
-    public void onBindViewHolder( @NonNull @NotNull AdaptadorCarrito.MyViewHolder holder, int position ) {
+    public void onBindViewHolder( @NonNull @NotNull AdaptadorCarrito.MyViewHolder holder, final int position ) {
         holder.titulo.setText( publicaciones.get( position ).getNombre() );
         holder.descripcion.setText( publicaciones.get( position ).getDescripcion() );
         holder.precio.setText( Double.toString( publicaciones.get( position ).getPrecio() ) );

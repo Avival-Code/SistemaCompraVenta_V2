@@ -40,7 +40,7 @@ public class AdaptadorFavorito extends RecyclerView.Adapter< AdaptadorFavorito.M
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull AdaptadorFavorito.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull AdaptadorFavorito.MyViewHolder holder, final int position) {
         holder.titulo.setText( publicaciones.get( position ).getNombre() );
         holder.descripcion.setText( publicaciones.get( position ).getDescripcion() );
         holder.precio.setText( Double.toString( publicaciones.get( position ).getPrecio() ) );

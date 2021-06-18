@@ -124,6 +124,7 @@
     <string name="evaluacion_calificacion">Calificacion:</string>
     <string name="mandar_evaluacion_boton">Mandar Evaluacion</string>
     <string name="evaluacion_ya_fue_enviada">La evaluacion ya fue enviada.</string>
+    <string name="seleccionar_calificacion">Seleccione la calificación:</string>
 
     <!--Cadenas del fragmento "modificar_datos_fragment-->
     <string name="modificar_datos_titulo">Modificar Datos Personales</string>

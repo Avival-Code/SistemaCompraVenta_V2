@@ -1,5 +1,6 @@
 package com.example.sistemacompraventa_v2.utilities;
 
+import com.example.sistemacompraventa_v2.entidades.EvaluacionUsuario;
 import com.example.sistemacompraventa_v2.entidades.Usuario;
 
 import org.json.JSONObject;
@@ -15,6 +16,15 @@ public class ObjetosJson {
         objeto.put( "telefono", usuario.getTelefono() );
         objeto.put( "tipo_usuario", usuario.getTipoUsuario().ordinal() );
         objeto.put( "calificacion", usuario.getCalificacion() );
+        return objeto;
+    }
+
+    public JSONObject crearObjetoJson( EvaluacionUsuario evaluacion ) throws org.json.JSONException {
+        JSONObject objeto = new JSONObject();
+        objeto.put( "clave_usuario", evaluacion.getClaveUsuario() );
+        objeto.put( "clave_evaluador_de_usuario", evaluacion.getClaveEvaluador() );
+        objeto.put( "evaluacion", evaluacion.getEvaluacion() );
+        objeto.put( "calificacion", evaluacion.getCalificacion() );
         return objeto;
     }
 

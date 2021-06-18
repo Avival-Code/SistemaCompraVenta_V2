@@ -20,6 +20,7 @@ import com.example.sistemacompraventa_v2.MainActivity;
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.RevisarHistorialActivity;
 import com.example.sistemacompraventa_v2.controladores.CarritoFragmento;
+import com.example.sistemacompraventa_v2.entidades.EvaluacionUsuario;
 import com.example.sistemacompraventa_v2.entidades.Publicacion;
 import com.example.sistemacompraventa_v2.entidades.Transaccion;
 import com.example.sistemacompraventa_v2.entidades.Usuario;
@@ -421,5 +422,34 @@ public class ApiRequests {
             }
         };
         request.add( arrayRequest );
+    }
+
+    public void sendEvaluacionUsuario(final Context currentContext, final int claveUsuario, final EvaluacionUsuario evaluacion, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentContext );
+        try {
+            String requestURL = usuarioEspecificoURL + claveUsuario + "/evaluaciones";
+            JSONObject payload = objetos.crearObjetoJson( evaluacion );
+            JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.POST, requestURL, payload, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Toast.makeText( currentContext, R.string.agregar_evaluacion_exito, Toast.LENGTH_SHORT ).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText( currentContext, R.string.agregar_evaluacion_fracaso, Toast.LENGTH_SHORT ).show();
+                }
+            } ) {
+                @Override
+                public Map< String, String > getHeaders() throws AuthFailureError {
+                    HashMap< String, String > headers = new HashMap< String, String > ();
+                    headers.put( "Authorization", "Bearer " + accessToken );
+                    return headers;
+                }
+            };
+            request.add( objectRequest );
+        } catch( org.json.JSONException json ) {
+            json.printStackTrace();
+        }
     }
 }

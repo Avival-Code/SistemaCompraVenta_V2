@@ -89,6 +89,8 @@
     <string name="eliminar_articulo_carrito_fracaso">No se pudo eliminar el articulo del carrito.</string>
     <string name="eliminar_articulo_favorito_exito">Se elimino el articulo de tus favoritos exitosamente.</string>
     <string name="eliminar_articulo_favorito_fracaso">No se pudo eliminar el articulo de tus favoritos.</string>
+    <string name="agregar_evaluacion_exito">La evaluación ha sido enviada de manera exitosa.</string>
+    <string name="agregar_evaluacion_fracaso">No se pudo mandar la evaluación.</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>
@@ -121,6 +123,7 @@
     <string name="evaluacion_contenido">Introduce su evaluacion...</string>
     <string name="evaluacion_calificacion">Calificacion:</string>
     <string name="mandar_evaluacion_boton">Mandar Evaluacion</string>
+    <string name="evaluacion_ya_fue_enviada">La evaluacion ya fue enviada.</string>
 
     <!--Cadenas del fragmento "modificar_datos_fragment-->
     <string name="modificar_datos_titulo">Modificar Datos Personales</string>

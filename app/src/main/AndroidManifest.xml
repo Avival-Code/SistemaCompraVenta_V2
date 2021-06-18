@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RevisarHistorialActivity"></activity>
+        <activity android:name=".EvaluarUsuarioActivity"></activity>
+        <activity android:name=".VisualizarTransaccionActivity" />
+        <activity android:name=".RevisarHistorialActivity" />
         <activity android:name=".VisualizarFavoritoActivity" />
         <activity android:name=".FavoritosActivity" />
         <activity android:name=".VisualizarArticuloCarrito" />

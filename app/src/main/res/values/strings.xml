@@ -108,6 +108,19 @@
     <!--Cadenas de actividad "visualizarfavorito_activity"-->
     <string name="eliminar_favorito_button">Eliminar de Favoritos</string>
 
+    <!--Cadenas de actividad "visualizar_transaccion_activity"-->
+    <string name="clave_transaccion">Clave Transaccion:</string>
+    <string name="clave_vendedor">Clave de Vendedor:</string>
+    <string name="fecha_venta">Fecha de Venta:</string>
+    <string name="total_transaccion">Precio Total:</string>
+    <string name="evaluar_usuario_button">Evaluar Usuario</string>
+
+    <!--Cadenas de actividad "evaluar_usuario_activity"-->
+    <string name="evaluacion_titulo">Evaluacion de Usuario</string>
+    <string name="evaluacion_contenido">Introduce su evaluacion...</string>
+    <string name="evaluacion_calificacion">Calificacion:</string>
+    <string name="mandar_evaluacion_boton">Mandar Evaluacion</string>
+
     <!--Cadenas del fragmento "modificar_datos_fragment-->
     <string name="modificar_datos_titulo">Modificar Datos Personales</string>
     <string name="modificar_datos_personales_button">Modificar Datos</string>

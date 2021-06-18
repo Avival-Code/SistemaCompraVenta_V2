@@ -399,7 +399,8 @@ public class ApiRequests {
                     try {
                         JSONObject object = response.getJSONObject( currentObject );
                         transacciones.add( new Transaccion( object.getInt( "clave_transaccion" ), object.getInt( "clave_vendedor" ),
-                                object.getString( "direccion_comprador" ), object.getString( "fecha_venta" ), object.getDouble( "total" ) ) );
+                                object.getString( "direccion_comprador" ), object.getString( "fecha_venta" ), object.getDouble( "total" ),
+                                object.getBoolean( "usuario_evaluado" ) ) );
                     } catch( org.json.JSONException json ) {
                         json.printStackTrace();
                     }

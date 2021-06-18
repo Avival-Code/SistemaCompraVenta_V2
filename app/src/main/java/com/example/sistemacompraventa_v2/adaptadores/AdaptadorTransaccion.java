@@ -1,6 +1,7 @@
 package com.example.sistemacompraventa_v2.adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sistemacompraventa_v2.DetallesPublicacionActivity;
 import com.example.sistemacompraventa_v2.R;
+import com.example.sistemacompraventa_v2.VisualizarTransaccionActivity;
 import com.example.sistemacompraventa_v2.entidades.Transaccion;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 
@@ -46,6 +49,13 @@ public class AdaptadorTransaccion extends RecyclerView.Adapter< AdaptadorTransac
         holder.mainLayout.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
+                Intent intent = new Intent( viewContext, VisualizarTransaccionActivity.class );
+                intent.putExtra( "clave_transaccion", transacciones.get( position ).getClaveTransaccion() );
+                intent.putExtra( "clave_vendedor", transacciones.get( position ).getClaveVendedor() );
+                intent.putExtra( "direccion_comprador", transacciones.get( position ).getDireccionComprador() );
+                intent.putExtra( "fecha", transacciones.get( position ).getFecha() );
+                intent.putExtra( "total", transacciones.get( position ).getTotal() );
+                viewContext.startActivity( intent );
             }
         } );
     }

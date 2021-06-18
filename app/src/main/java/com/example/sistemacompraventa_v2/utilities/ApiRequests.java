@@ -18,8 +18,10 @@ import com.example.sistemacompraventa_v2.BuscarActivity;
 import com.example.sistemacompraventa_v2.FavoritosActivity;
 import com.example.sistemacompraventa_v2.MainActivity;
 import com.example.sistemacompraventa_v2.R;
+import com.example.sistemacompraventa_v2.RevisarHistorialActivity;
 import com.example.sistemacompraventa_v2.controladores.CarritoFragmento;
 import com.example.sistemacompraventa_v2.entidades.Publicacion;
+import com.example.sistemacompraventa_v2.entidades.Transaccion;
 import com.example.sistemacompraventa_v2.entidades.Usuario;
 import com.example.sistemacompraventa_v2.enumeraciones.Categoria;
 import com.example.sistemacompraventa_v2.enumeraciones.TipoUsuario;
@@ -39,6 +41,7 @@ public class ApiRequests {
     private String usuariosURL = "http://192.168.1.68:5000/usuarios";
     private String usuarioEspecificoURL = "http://192.168.1.68:5000/usuarios/";
     private String publicacionesURL = "http://192.168.1.68:5000/publicaciones";
+    private String transaccionesURL = "http://192.168.1.68:5000/transacciones";
     private ObjetosJson objetos = null;
 
     public ApiRequests() { objetos = new ObjetosJson(); }
@@ -382,6 +385,40 @@ public class ApiRequests {
                 Toast.makeText( currentActivity.getBaseContext(), R.string.publicaciones_no_encontradas, Toast.LENGTH_SHORT ).show();
             }
         } );
+        request.add( arrayRequest );
+    }
+
+    public void getTransaccionesUsuario( final Activity currentActivity, final int claveUsuario, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentActivity.getBaseContext() );
+        String requestURL = transaccionesURL + "/" + claveUsuario;
+        JsonArrayRequest arrayRequest = new JsonArrayRequest( Request.Method.GET, requestURL, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse( JSONArray response ) {
+                List<Transaccion> transacciones = new ArrayList<>();
+                for( int currentObject = 0; currentObject < response.length(); currentObject++ ) {
+                    try {
+                        JSONObject object = response.getJSONObject( currentObject );
+                        transacciones.add( new Transaccion( object.getInt( "clave_transaccion" ), object.getInt( "clave_vendedor" ),
+                                object.getString( "direccion_comprador" ), object.getString( "fecha_venta" ), object.getDouble( "total" ) ) );
+                    } catch( org.json.JSONException json ) {
+                        json.printStackTrace();
+                    }
+                }
+                LoginSession.getInstance().setTransaccionesUsuario( transacciones );
+                ( ( RevisarHistorialActivity ) currentActivity ).setTransaccionesHistorial();
+            } }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse( VolleyError error ) {
+                Toast.makeText( currentActivity.getBaseContext(), R.string.publicaciones_no_encontradas, Toast.LENGTH_SHORT ).show();
+            }
+        } )  {
+            @Override
+            public Map< String, String > getHeaders() throws AuthFailureError {
+                HashMap< String, String > headers = new HashMap< String, String > ();
+                headers.put( "Authorization", "Bearer " + accessToken );
+                return headers;
+            }
+        };
         request.add( arrayRequest );
     }
 }

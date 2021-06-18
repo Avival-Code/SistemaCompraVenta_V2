@@ -6,12 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.sistemacompraventa_v2.adaptadores.AdaptadorCarrito;
-import com.example.sistemacompraventa_v2.adaptadores.AdaptadorTransacciones;
+import com.example.sistemacompraventa_v2.adaptadores.AdaptadorTransaccion;
+import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
+import com.example.sistemacompraventa_v2.utilities.ApiRequests;
 
 public class RevisarHistorialActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private AdaptadorTransacciones adaptador;
+    private AdaptadorTransaccion adaptador;
+    private ApiRequests requests;
 
 
     @Override
@@ -19,12 +21,13 @@ public class RevisarHistorialActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.revisar_historial_activity );
 
+        requests = new ApiRequests();
         recyclerView = findViewById( R.id.recyclerViewHistorial );
-        setTransaccionesHistorial();
+        requests.getTransaccionesUsuario( this, LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
     }
 
     public void setTransaccionesHistorial() {
-        adaptador = new AdaptadorTransacciones( this );
+        adaptador = new AdaptadorTransaccion( this );
         recyclerView.setAdapter( adaptador );
         recyclerView.setLayoutManager( new LinearLayoutManager( this ) );
     }

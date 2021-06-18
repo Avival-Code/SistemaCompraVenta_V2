@@ -1,7 +1,6 @@
 package com.example.sistemacompraventa_v2.adaptadores;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +19,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class AdaptadorTransacciones extends RecyclerView.Adapter< AdaptadorTransacciones.MyViewHolder > {
+public class AdaptadorTransaccion extends RecyclerView.Adapter< AdaptadorTransaccion.MyViewHolder > {
     Context viewContext;
     private List< Transaccion > transacciones;
 
-    public AdaptadorTransacciones( Context contextIn ) {
+    public AdaptadorTransaccion(Context contextIn ) {
         viewContext = contextIn;
         transacciones = LoginSession.getInstance().getTransaccionesUsuario();
     }
@@ -35,11 +34,11 @@ public class AdaptadorTransacciones extends RecyclerView.Adapter< AdaptadorTrans
     public MyViewHolder onCreateViewHolder( @NonNull @NotNull ViewGroup parent, int viewType ) {
         LayoutInflater inflater = LayoutInflater.from( viewContext );
         View view = inflater.inflate( R.layout.transaccion_card_row, parent, false );
-        return new AdaptadorTransacciones.MyViewHolder( view );
+        return new AdaptadorTransaccion.MyViewHolder( view );
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull AdaptadorTransacciones.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull AdaptadorTransaccion.MyViewHolder holder, int position ) {
         holder.claveTransaccion.setText( transacciones.get( position ).getClaveTransaccion() );
         holder.fecha.setText( transacciones.get( position ).getFecha() );
         holder.total.setText( Double.toString( transacciones.get( position ).getTotal() ) );

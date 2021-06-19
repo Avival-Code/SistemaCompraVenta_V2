@@ -28,6 +28,13 @@
         </item>
 
         <item
+            android:id="@+id/domicilio"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/domicilio">
+
+        </item>
+
+        <item
             android:id="@+id/carritoCompras"
             android:icon="@drawable/ic_baseline_carritocompras_24"
             android:title="@string/carritoCompra">

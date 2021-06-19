@@ -8,6 +8,7 @@
     <string name="iniciarSesion">Iniciar Sesion</string>
     <string name="buscarProducto">Buscar Producto</string>
     <string name="perfil">Perfil</string>
+    <string name="domicilio">Domicilios</string>
     <string name="cerrarSesion">Cerrar Sesion</string>
     <string name="carritoCompra">Carrito Compra</string>
     <string name="favoritos">Favoritos</string>

@@ -93,6 +93,8 @@
     <string name="eliminar_articulo_favorito_fracaso">No se pudo eliminar el articulo de tus favoritos.</string>
     <string name="agregar_evaluacion_exito">La evaluación ha sido enviada de manera exitosa.</string>
     <string name="agregar_evaluacion_fracaso">No se pudo mandar la evaluación.</string>
+    <string name="agregar_domicilio_exito">Se ha creado el domicilio exitosamente</string>
+    <string name="agregar_domicilio_fracaso">No se pudo crear el domicilio. Intentelo mas tarde.</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>
@@ -146,4 +148,23 @@
     <string name="cantidad_articulos_pedido">Cantidad de Artículos:</string>
     <string name="subtotal_pedidos">Subtotal:</string>
     <string name="mandar_pedido_button">Mandar Pedido</string>
+
+    <!--Cadenas de la actividad crear_domicilio_activity-->
+    <string name="titulo_crear_domicilio">Crear Domicilio</string>
+    <string name="calle_input">Calle...</string>
+    <string name="colonia_input">Colonia...</string>
+    <string name="municipio_input">Municipio...</string>
+    <string name="codigo_postal_input">Código Postal...</string>
+    <string name="estado_input">Estado...</string>
+    <string name="numero_interno_input">Número interno...</string>
+    <string name="numero_externo_input">Número externo...</string>
+    <string name="descripcion_input">Descripción...</string>
+    <string name="calle_invalid">La calle no es valida</string>
+    <string name="colonia_invalid">La colonia no es valida</string>
+    <string name="municipio_invalid">El municipio no valido</string>
+    <string name="estado_invalid">El estado no es valido</string>
+    <string name="codigo_postal_invalid">El codigo postal no es valido</string>
+    <string name="numerointerno_invalid">El numero Interno no es valido</string>
+    <string name="numeroexterno_invalid">El numero externo no es valido</string>
+    <string name="descripcion_invalid">La descripcion no es valida</string>
 </resources>

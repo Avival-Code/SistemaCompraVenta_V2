@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RealizarPedidoActivity"></activity>
+        <activity android:name=".CrearDomicilioActivity"></activity>
+        <activity android:name=".RealizarPedidoActivity" />
         <activity android:name=".EvaluarUsuarioActivity" />
         <activity android:name=".VisualizarTransaccionActivity" />
         <activity android:name=".RevisarHistorialActivity" />

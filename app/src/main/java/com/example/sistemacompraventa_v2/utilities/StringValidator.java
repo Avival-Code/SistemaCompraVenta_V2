@@ -1,5 +1,6 @@
 package com.example.sistemacompraventa_v2.utilities;
 
+import com.example.sistemacompraventa_v2.entidades.Domicilio;
 import com.example.sistemacompraventa_v2.entidades.Usuario;
 
 public class StringValidator {
@@ -21,6 +22,14 @@ public class StringValidator {
         return AreNamesValid( student.getNombres() ) && AreLastNamesValid( student.getApellidos() ) &&
                 IsTelephoneValid( student.getTelefono() ) && IsEmailValid( student.getCorreoElectronico() ) &&
                 IsPasswordValid( student.getContrasena() ) && DoPasswordsMatch( student.getContrasena(), passwordConfirm );
+    }
+
+    public boolean IsDomicilioInformationValid( Domicilio domicilio ) {
+        return IsDomicilioStringValid( domicilio.getCalle() ) && IsDomicilioStringValid( domicilio.getColonia() ) &&
+                IsDomicilioStringValid( domicilio.getMunicipio() ) && IsDomicilioStringValid( domicilio.getEstado() ) &&
+                IsDomilicioNumberValid( Integer.toString( domicilio.getNumerInterno() ) ) &&
+                IsDomilicioNumberValid( Integer.toString( domicilio.getNumeroExterno() ) ) &&
+                IsDomicilioDescripcionValid( domicilio.getDescripcion() );
     }
 
     public boolean isUserUpdateInformationValid( Usuario usuario ) {
@@ -63,6 +72,18 @@ public class StringValidator {
 
     public boolean DoPasswordsMatch( String password, String confirmPassword ) {
         return password.equals( confirmPassword );
+    }
+
+    public boolean IsDomicilioStringValid( String string ) {
+        return IsStringValidSize( string, 3, 50 ) && !HasInvalidCharacter( string );
+    }
+
+    public boolean IsDomilicioNumberValid( String number ) {
+        return HasOnlyNumbers( number ) && IsStringValidSize( number, 1, 5 );
+    }
+
+    public boolean IsDomicilioDescripcionValid( String descripcion ) {
+        return !HasNumbers( descripcion ) && IsStringValidSize( descripcion, 5, 100 );
     }
 
     private boolean IsStringValidSize( String input, int minSize, int maxSize ) {

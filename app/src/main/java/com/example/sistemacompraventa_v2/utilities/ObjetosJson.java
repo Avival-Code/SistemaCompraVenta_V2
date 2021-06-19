@@ -1,5 +1,6 @@
 package com.example.sistemacompraventa_v2.utilities;
 
+import com.example.sistemacompraventa_v2.entidades.Domicilio;
 import com.example.sistemacompraventa_v2.entidades.EvaluacionUsuario;
 import com.example.sistemacompraventa_v2.entidades.Usuario;
 
@@ -25,6 +26,21 @@ public class ObjetosJson {
         objeto.put( "clave_evaluador_de_usuario", evaluacion.getClaveEvaluador() );
         objeto.put( "evaluacion", evaluacion.getEvaluacion() );
         objeto.put( "calificacion", evaluacion.getCalificacion() );
+        return objeto;
+    }
+
+    public JSONObject crearObjetoJson( Domicilio domicilio ) throws org.json.JSONException {
+        JSONObject objeto = new JSONObject();
+        objeto.put( "discriminante_domicilio", domicilio.getDiscriminante() );
+        objeto.put( "clave_usuario", domicilio.getClaveUsuario() );
+        objeto.put( "calle", domicilio.getCalle() );
+        objeto.put( "colonia", domicilio.getColonia() );
+        objeto.put( "municipio", domicilio.getMunicipio() );
+        objeto.put( "codigo_postal", domicilio.getCodigo() );
+        objeto.put( "estado", domicilio.getEstado() );
+        objeto.put( "numero_interno", domicilio.getNumerInterno() );
+        objeto.put( "numero_externo", domicilio.getNumeroExterno() );
+        objeto.put( "descripcion", domicilio.getDescripcion() );
         return objeto;
     }
 

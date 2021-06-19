@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -13,6 +14,9 @@ import android.widget.Toast;
 import com.example.sistemacompraventa_v2.entidades.EvaluacionUsuario;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.utilities.ApiRequests;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EvaluarUsuarioActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private EditText contenidoEvaluacion;
@@ -35,7 +39,8 @@ public class EvaluarUsuarioActivity extends AppCompatActivity implements View.On
         mandarEvaluacionBoton = findViewById( R.id.mandarEvaluacionUsuarioButton );
         claveUsuarioEvaluado = getIntent().getIntExtra( "clave_vendedor", -1 );
 
-
+        spinner.setOnItemSelectedListener( this );
+        setSpinnerAdapter();
     }
 
     @Override
@@ -50,6 +55,17 @@ public class EvaluarUsuarioActivity extends AppCompatActivity implements View.On
                 }
                 break;
         }
+    }
+
+    private void setSpinnerAdapter() {
+        List< String > calificaciones = new ArrayList< String >();
+        for( int i = 0; i < 5; i++ ) {
+            calificaciones.add( Integer.toString( i + 1 ) );
+        }
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter< String >( this, android.R.layout.simple_spinner_item, calificaciones );
+        dataAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+        spinner.setAdapter( dataAdapter );
     }
 
     @Override

@@ -79,7 +79,9 @@
     <string name="usuario_no_encontrado">No se encontro el usuario especificado.</string>
     <string name="clave_usuario_no_encontrada">No se encontro el usuario con la clave especificada.</string>
     <string name="actualizacion_exitosa">Actualizacion de datos exitosa.</string>
+    <string name="actualizacion_fracaso">No se pueden actualizar sus datos en este momento. Inténtelo más tarde.</string>
     <string name="eliminacion_exitosa">Tu cuenta se ha eliminado de manera exitosa.</string>
+    <string name="eliminacion_fracaso">No se pudo eliminar su cuenta en este momento. Inténtelo más tarde.</string>
     <string name="publicaciones_no_encontradas">No se encontraron publicaciones o ocurrio un error.</string>
     <string name="agregar_favorito_exitoso">Se agrego exitosamente a la lista de favoritos.</string>
     <string name="agregar_favorito_fracaso">La publicacion ya esta en la lista de favoritos o ocurrio un error.</string>
@@ -137,4 +139,11 @@
     <string name="titulo_carrito">Carrito de Compras</string>
     <string name="subtotal_carrito">Subtotal:</string>
     <string name="numero_articulos_carrito">Numero de Articulos:</string>
+    <string name="carrito_vacio">No tienes artículos en tu carrito de compras.</string>
+
+    <!--Cadenas de la actividad realizar_pedido_activity-->
+    <string name="titulo_actividad_pedidos">Pedido Final</string>
+    <string name="cantidad_articulos_pedido">Cantidad de Artículos:</string>
+    <string name="subtotal_pedidos">Subtotal:</string>
+    <string name="mandar_pedido_button">Mandar Pedido</string>
 </resources>

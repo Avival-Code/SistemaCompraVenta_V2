@@ -11,9 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sistemacompraventa_v2.CarritoArticulosActivity;
 import com.example.sistemacompraventa_v2.R;
+import com.example.sistemacompraventa_v2.RealizarPedidoActivity;
 import com.example.sistemacompraventa_v2.entidades.Publicacion;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.utilities.ApiRequests;
@@ -40,6 +42,7 @@ public class CarritoFragmento extends Fragment implements View.OnClickListener{
         realizarPedidoButton = carritoView.findViewById( R.id.realizarPedidoButton );
         verArticulosButton = carritoView.findViewById( R.id.verArticulosButton );
 
+        //Added useless comment
         realizarPedidoButton.setOnClickListener( this );
         verArticulosButton.setOnClickListener( this );
         return carritoView;
@@ -61,6 +64,12 @@ public class CarritoFragmento extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.realizarPedidoButton:
+                if( LoginSession.getInstance().getArticulosCarrito().size() > 0 ) {
+                    Intent pedidoIntent = new Intent( getActivity(), RealizarPedidoActivity.class );
+                    getActivity().startActivity( pedidoIntent );
+                } else {
+                    Toast.makeText( getContext(), R.string.carrito_vacio, Toast.LENGTH_SHORT ).show();
+                }
                 break;
         }
     }

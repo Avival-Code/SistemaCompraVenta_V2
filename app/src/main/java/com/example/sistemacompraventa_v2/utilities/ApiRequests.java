@@ -348,7 +348,7 @@ public class ApiRequests {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse( VolleyError error ) {
-                    Toast.makeText( currentActivity.getBaseContext(), R.string.clave_usuario_no_encontrada, Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( currentActivity.getBaseContext(), R.string.eliminacion_fracaso, Toast.LENGTH_SHORT ).show();
                 }
             } ) {
                 @Override

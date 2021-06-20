@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.sistemacompraventa_v2.adaptadores.AdaptadorCarrito;
 import com.example.sistemacompraventa_v2.adaptadores.AdaptadorFavorito;
@@ -33,8 +34,12 @@ public class FavoritosActivity extends AppCompatActivity {
     }
 
     public void setArticulosCarrito() {
-        adaptador = new AdaptadorFavorito( this );
-        recyclerView.setAdapter( adaptador );
-        recyclerView.setLayoutManager( new LinearLayoutManager( this ) );
+        if( LoginSession.getInstance().getArticulosFavoritos() != null ) {
+            adaptador = new AdaptadorFavorito( this );
+            recyclerView.setAdapter( adaptador );
+            recyclerView.setLayoutManager( new LinearLayoutManager( this ) );
+        } else {
+            Toast.makeText( this, R.string.favoritos_no_encontrados, Toast.LENGTH_SHORT ).show();
+        }
     }
 }

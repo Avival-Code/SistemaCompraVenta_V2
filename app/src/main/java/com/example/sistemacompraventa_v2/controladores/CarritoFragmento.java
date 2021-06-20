@@ -41,7 +41,7 @@ public class CarritoFragmento extends Fragment implements View.OnClickListener{
         subtotalText = carritoView.findViewById( R.id.subtotal_carrito );
         realizarPedidoButton = carritoView.findViewById( R.id.realizarPedidoButton );
         verArticulosButton = carritoView.findViewById( R.id.verArticulosButton );
-        //random test comment
+
         realizarPedidoButton.setOnClickListener( this );
         verArticulosButton.setOnClickListener( this );
         return carritoView;
@@ -58,12 +58,16 @@ public class CarritoFragmento extends Fragment implements View.OnClickListener{
     public void onClick( View view ) {
         switch( view.getId() ) {
             case R.id.verArticulosButton:
-                Intent intent = new Intent( getActivity(), CarritoArticulosActivity.class );
-                getActivity().startActivity( intent );
+                if( LoginSession.getInstance().getArticulosCarrito() != null ) {
+                    Intent intent = new Intent( getActivity(), CarritoArticulosActivity.class );
+                    getActivity().startActivity( intent );
+                } else {
+                    Toast.makeText( getContext(), R.string.carrito_vacio, Toast.LENGTH_SHORT ).show();
+                }
                 break;
 
             case R.id.realizarPedidoButton:
-                if( LoginSession.getInstance().getArticulosCarrito().size() > 0 ) {
+                if( LoginSession.getInstance().getArticulosCarrito() != null && LoginSession.getInstance().getArticulosCarrito().size() > 0 ) {
                     Intent pedidoIntent = new Intent( getActivity(), RealizarPedidoActivity.class );
                     getActivity().startActivity( pedidoIntent );
                 } else {
@@ -74,8 +78,13 @@ public class CarritoFragmento extends Fragment implements View.OnClickListener{
     }
 
     public void setData() {
-        cantidadText.setText( Integer.toString( LoginSession.getInstance().getArticulosCarrito().size() ) );
-        subtotalText.setText( Double.toString( getSubtotal( LoginSession.getInstance().getArticulosCarrito() ) ) );
+        if( LoginSession.getInstance().getArticulosCarrito() != null ) {
+            cantidadText.setText( Integer.toString( LoginSession.getInstance().getArticulosCarrito().size() ) );
+            subtotalText.setText( Double.toString( getSubtotal( LoginSession.getInstance().getArticulosCarrito() ) ) );
+        } else {
+            cantidadText.setText( "" );
+            subtotalText.setText( "" );
+        }
     }
 
     private double getSubtotal( List< Publicacion > articulos ) {

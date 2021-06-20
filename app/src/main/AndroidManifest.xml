@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CrearPublicacionActivity"></activity>
+        <activity android:name=".VisualizarPublicacionActivity"></activity>
+        <activity android:name=".CrearPublicacionActivity" />
         <activity android:name=".VisualizarDomicilioActivity" />
         <activity android:name=".CrearDomicilioActivity" />
         <activity android:name=".RealizarPedidoActivity" />

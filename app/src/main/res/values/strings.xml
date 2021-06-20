@@ -95,6 +95,7 @@
     <!--Cadenas del fragmento publicacion_fragment-->
     <string name="crear_publicacion_button">Publicar Producto</string>
     <string name="ver_publicaciones_button">Ver Publicaciones Actuales</string>
+    <string name="eliminar_publicacion_usuario_button">Eliminar Publicación</string>
 
     <!--Cadenas de respuesta para la clase "ApiRequest.java"-->
     <string name="usuario_ya_existe">El usuario ya existe.</string>

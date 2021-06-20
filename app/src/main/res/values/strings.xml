@@ -86,8 +86,6 @@
     <string name="cantidad_publicacion_invalido">La cantidad no es valida</string>
     <string name="unidad_publicacion_invalido">La unidad no es valida</string>
 
-
-
     <!--Cadenas de la actividad "VisualizarArticulosCarrito"-->
     <string name="precio_carrito">Precio:</string>
     <string name="calificacion_carrito">Calificacion:</string>
@@ -125,6 +123,8 @@
     <string name="domicilios_no_encontrados">No se encontraron domicilios.</string>
     <string name="eliminar_domicilio_exito">Se ha eliminado el domicilio exitosamente.</string>
     <string name="eliminar_domicilio_fracaso">No se pudo eliminar el domicilio.</string>
+    <string name="crear_publicacion_exito">Se ha publicado el producto de manera exitosa.</string>
+    <string name="crear_publicacion_fracaso">No se pudo publicar el producto.</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>

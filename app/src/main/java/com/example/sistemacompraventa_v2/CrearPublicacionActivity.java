@@ -40,7 +40,7 @@ public class CrearPublicacionActivity extends AppCompatActivity implements View.
                 CheckUserInput();
                 if( !creoPublicacion && validator.IsPublicacionInformationValid( CreatePublicacion() ) ) {
                     creoPublicacion = true;
-                    
+                    requests.crearPublicacion( this, LoginSession.getInstance().getClaveUsuario(), CreatePublicacion(), LoginSession.getInstance().getAccessToken() );
                 }
                 break;
         }

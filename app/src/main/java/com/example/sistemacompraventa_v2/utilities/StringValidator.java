@@ -1,6 +1,7 @@
 package com.example.sistemacompraventa_v2.utilities;
 
 import com.example.sistemacompraventa_v2.entidades.Domicilio;
+import com.example.sistemacompraventa_v2.entidades.Publicacion;
 import com.example.sistemacompraventa_v2.entidades.Usuario;
 
 public class StringValidator {
@@ -30,6 +31,14 @@ public class StringValidator {
                 IsDomilicioNumberValid( Integer.toString( domicilio.getNumerInterno() ) ) &&
                 IsDomilicioNumberValid( Integer.toString( domicilio.getNumeroExterno() ) ) &&
                 IsDomicilioDescripcionValid( domicilio.getDescripcion() );
+    }
+
+    public boolean IsPublicacionInformationValid( Publicacion publicacion ) {
+        return IsPublicacionStringValid( publicacion.getNombre() ) && IsPublicacionStringValid( publicacion.getDescripcion() ) &&
+                IsPublicacionNumberValid( Integer.toString( publicacion.getCategoria().ordinal() ) ) &&
+                IsPublicacionNumberValid( Double.toString( publicacion.getPrecio() ) ) &&
+                IsPublicacionNumberValid( Integer.toString( publicacion.getCantidad_disponible() ) ) &&
+                IsPublicacionStringValid( publicacion.getUnidad_medida() );
     }
 
     public boolean isUserUpdateInformationValid( Usuario usuario ) {
@@ -84,6 +93,18 @@ public class StringValidator {
 
     public boolean IsDomicilioDescripcionValid( String descripcion ) {
         return !HasNumbers( descripcion ) && IsStringValidSize( descripcion, 5, 100 );
+    }
+
+    public boolean IsPublicacionStringValid( String string ) {
+        return IsStringValidSize( string, 3, 50 ) && !HasInvalidCharacter( string );
+    }
+
+    public boolean IsPublicacionNumberValid( String number ) {
+        return HasOnlyNumbers( number ) && IsStringValidSize( number, 1, 5 );
+    }
+
+    public boolean IsPublicacionDescripcionValid( String descripcion ) {
+        return !HasNumbers( descripcion ) && IsStringValidSize( descripcion, 5, 200 );
     }
 
     private boolean IsStringValidSize( String input, int minSize, int maxSize ) {

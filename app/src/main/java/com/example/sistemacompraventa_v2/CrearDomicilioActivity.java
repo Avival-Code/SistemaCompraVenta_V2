@@ -17,7 +17,6 @@ public class CrearDomicilioActivity extends AppCompatActivity implements View.On
     private Button crearDomiclioButton;
     private ApiRequests requests;
     private StringValidator validator;
-    private Domicilio domicilio;
     private boolean mandeDomicilio;
 
     @Override
@@ -37,10 +36,9 @@ public class CrearDomicilioActivity extends AppCompatActivity implements View.On
         switch( view.getId() ) {
             case R.id.crear_domicilio_button:
                 CheckUserInput();
-                domicilio = CreateDomicilio();
-                if( !mandeDomicilio && validator.IsDomicilioInformationValid( domicilio ) ) {
+                if( !mandeDomicilio && validator.IsDomicilioInformationValid( CreateDomicilio() ) ) {
                     mandeDomicilio = true;
-                    requests.agregarDomicilio( getBaseContext(), LoginSession.getInstance().getClaveUsuario(), domicilio, LoginSession.getInstance().getAccessToken() );
+                    requests.agregarDomicilio( getBaseContext(), LoginSession.getInstance().getClaveUsuario(), CreateDomicilio(), LoginSession.getInstance().getAccessToken() );
                 }
                 break;
         }

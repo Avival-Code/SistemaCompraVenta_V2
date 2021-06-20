@@ -70,6 +70,24 @@
     <string name="cantidad_detalles">Cantidad:</string>
     <string name="inicio_sesion_requerida">Debes iniciar sesion para poder realizar esta accion.</string>
 
+    <!--Cadenas utilizadas en la actividad crear_publicacion_activity-->
+    <string name="crear_publicacion_titulo">Publicar Producto</string>
+    <string name="nombre_crear_publicacion">Nombre del producto...</string>
+    <string name="descripcion_crear_publicacion">Descripción del producto...</string>
+    <string name="categoria_crear_publicacion">Categoria del producto...</string>
+    <string name="precio_crear_publicacion">Precio del producto...</string>
+    <string name="cantidad_crear_publicacion">Cantidad disponible...</string>
+    <string name="unidad_crear_publicacion">Unidad del producto...</string>
+    <string name="publicar_producto_button">Publicar</string>
+    <string name="nombre_publicacion_invalido">El nombre no es valido</string>
+    <string name="descripcion_publicacion_invalido">La descripcion no es valida</string>
+    <string name="categoria_publicacion_invalido">La categoria no es valida</string>
+    <string name="precio_publicacion_invalido">El precio no es valido</string>
+    <string name="cantidad_publicacion_invalido">La cantidad no es valida</string>
+    <string name="unidad_publicacion_invalido">La unidad no es valida</string>
+
+
+
     <!--Cadenas de la actividad "VisualizarArticulosCarrito"-->
     <string name="precio_carrito">Precio:</string>
     <string name="calificacion_carrito">Calificacion:</string>
@@ -77,7 +95,7 @@
     <string name="eliminar_carrito_button">Eliminar de Carrito de Compras</string>
 
     <!--Cadenas del fragmento publicacion_fragment-->
-    <string name="crear_publicacion_button">Crear Publicacion</string>
+    <string name="crear_publicacion_button">Publicar Producto</string>
     <string name="ver_publicaciones_button">Ver Publicaciones Actuales</string>
 
     <!--Cadenas de respuesta para la clase "ApiRequest.java"-->

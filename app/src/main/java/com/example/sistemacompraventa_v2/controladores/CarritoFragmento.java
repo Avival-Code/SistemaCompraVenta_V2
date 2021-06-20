@@ -41,7 +41,7 @@ public class CarritoFragmento extends Fragment implements View.OnClickListener{
         subtotalText = carritoView.findViewById( R.id.subtotal_carrito );
         realizarPedidoButton = carritoView.findViewById( R.id.realizarPedidoButton );
         verArticulosButton = carritoView.findViewById( R.id.verArticulosButton );
-
+        //random test comment
         realizarPedidoButton.setOnClickListener( this );
         verArticulosButton.setOnClickListener( this );
         return carritoView;

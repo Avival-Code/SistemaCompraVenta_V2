@@ -101,6 +101,8 @@
     <string name="agregar_domicilio_exito">Se ha creado el domicilio exitosamente</string>
     <string name="agregar_domicilio_fracaso">No se pudo crear el domicilio. Intentelo mas tarde.</string>
     <string name="domicilios_no_encontrados">No se encontraron domicilios.</string>
+    <string name="eliminar_domicilio_exito">Se ha eliminado el domicilio exitosamente.</string>
+    <string name="eliminar_domicilio_fracaso">No se pudo eliminar el domicilio.</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>
@@ -154,6 +156,18 @@
     <string name="cantidad_articulos_pedido">Cantidad de Artículos:</string>
     <string name="subtotal_pedidos">Subtotal:</string>
     <string name="mandar_pedido_button">Mandar Pedido</string>
+
+    <!--Cadenas utilizadas en la actividad visualizar_domicilio_activity-->
+    <string name="calle_visualizar">Calle:</string>
+    <string name="colonia_visualizar">Colonia:</string>
+    <string name="municipio_visualizar">Municipio:</string>
+    <string name="codigo_visualizar">Código Postal:</string>
+    <string name="estado_visualizar">Estado:</string>
+    <string name="numinterno_visualizar">Número Interno:</string>
+    <string name="numexterno_visualizar">Número Externo:</string>
+    <string name="descripcion_visualizar">Descripción:</string>
+    <string name="eliminar_domicilio_button">Eliminar Domicilio</string>
+    <string name="domicilio_vacio_visualizar">No hay domicilios para eliminar.</string>
 
     <!--Cadenas de la actividad crear_domicilio_activity-->
     <string name="titulo_crear_domicilio">Crear Domicilio</string>

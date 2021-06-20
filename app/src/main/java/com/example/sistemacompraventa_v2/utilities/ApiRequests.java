@@ -518,4 +518,28 @@ public class ApiRequests {
         };
         request.add( arrayRequest );
     }
+
+    public void eliminarDomicilioUsuario( final Context currentContext, final int claveUsuario, final int discriminanteDomicilio, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentContext );
+        String requestURL = usuarioEspecificoURL + claveUsuario + "/domicilios/" + discriminanteDomicilio;
+        JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.DELETE, requestURL, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText( currentContext, R.string.eliminar_domicilio_exito, Toast.LENGTH_SHORT ).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText( currentContext, R.string.eliminar_domicilio_fracaso, Toast.LENGTH_SHORT ).show();
+            }
+        } ) {
+            @Override
+            public Map< String, String > getHeaders() throws AuthFailureError {
+                HashMap< String, String > headers = new HashMap< String, String > ();
+                headers.put( "Authorization", "Bearer " + accessToken );
+                return headers;
+            }
+        };
+        request.add( objectRequest );
+    }
 }

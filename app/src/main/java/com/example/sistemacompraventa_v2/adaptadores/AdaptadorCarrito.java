@@ -47,7 +47,7 @@ public class AdaptadorCarrito extends RecyclerView.Adapter< AdaptadorCarrito.MyV
 
         holder.mainLayout.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick( View v ) {
                 Intent intent = new Intent( viewContext, VisualizarArticuloCarrito.class );
                 intent.putExtra( "clave_publicacion", publicaciones.get( position ).getClave_publicacion() );
                 intent.putExtra( "nombre", publicaciones.get( position ).getNombre() );

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.VisualizarArticuloCarrito;
+import com.example.sistemacompraventa_v2.VisualizarDomicilioActivity;
 import com.example.sistemacompraventa_v2.entidades.Domicilio;
 
 import org.jetbrains.annotations.NotNull;
@@ -39,13 +40,25 @@ public class AdaptadorDomicilio extends RecyclerView.Adapter< AdaptadorDomicilio
     }
 
     @Override
-    public void onBindViewHolder( @NonNull @NotNull AdaptadorDomicilio.MyViewHolder holder, int position ) {
+    public void onBindViewHolder( @NonNull @NotNull AdaptadorDomicilio.MyViewHolder holder, final int position ) {
         holder.calle.setText( domicilios.get( position ).getCalle() );
         holder.colonia.setText( domicilios.get( position ).getColonia() );
 
         holder.mainLayout.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
+                Intent intent = new Intent( viewContext, VisualizarDomicilioActivity.class );
+                intent.putExtra( "discriminante_domicilio", domicilios.get( position ).getDiscriminante() );
+                intent.putExtra( "clave_usuario", domicilios.get( position ).getClaveUsuario() );
+                intent.putExtra( "calle", domicilios.get( position ).getCalle() );
+                intent.putExtra( "colonia", domicilios.get( position ).getCalle() );
+                intent.putExtra( "municipio", domicilios.get( position ).getMunicipio() );
+                intent.putExtra( "codigo_postal", domicilios.get( position ).getCodigo() );
+                intent.putExtra( "estado", domicilios.get( position ).getEstado() );
+                intent.putExtra( "numero_interno", domicilios.get( position ).getNumerInterno() );
+                intent.putExtra( "numero_externo", domicilios.get( position ).getNumeroExterno() );
+                intent.putExtra( "descripcion", domicilios.get( position ).getDescripcion() );
+                viewContext.startActivity( intent );
             }
         } );
     }

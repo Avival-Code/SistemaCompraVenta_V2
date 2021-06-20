@@ -23,12 +23,14 @@ public class VisualizarPublicacionActivity extends AppCompatActivity implements 
     private ImageView imagen;
     private Button eliminarPublicacionButton;
     private Publicacion publicacion;
+    private boolean eliminado;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.visualizar_publicacion_activity );
 
+        eliminado = false;
         requests = new ApiRequests();
         titulo = findViewById( R.id.titulo_publicacion_usuario );
         descripcion = findViewById( R.id.descripcion_publicacion_usuario );
@@ -48,6 +50,10 @@ public class VisualizarPublicacionActivity extends AppCompatActivity implements 
     public void onClick( View view ) {
         switch( view.getId() ) {
             case R.id.eliminar_publicacion_button:
+                if( !eliminado ) {
+                    eliminado = true;
+
+                }
                 break;
         }
     }

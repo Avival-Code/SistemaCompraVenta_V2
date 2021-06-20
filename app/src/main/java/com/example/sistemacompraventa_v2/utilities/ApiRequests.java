@@ -546,7 +546,7 @@ public class ApiRequests {
     public void crearPublicacion( final Context currentContext, final int claveUsuario, final Publicacion publicacion, final String accessToken ) {
         RequestQueue request = Volley.newRequestQueue( currentContext );
         try {
-            String requestURL = publicacionesURL + claveUsuario;
+            String requestURL = publicacionesURL + "/" +claveUsuario;
             JSONObject payload = objetos.crearObjetoJson( publicacion );
             JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.POST, requestURL, payload, new Response.Listener<JSONObject>() {
                 @Override
@@ -570,5 +570,29 @@ public class ApiRequests {
         } catch( org.json.JSONException json ) {
             json.printStackTrace();
         }
+    }
+
+    public void eliminarPublicacion( final Context currentContext, final int clavePublicacion, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentContext );
+        String requestURL = publicacionesURL + "/" + clavePublicacion;
+        JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.DELETE, requestURL, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText( currentContext, R.string.eliminar_publicacion_exito, Toast.LENGTH_SHORT ).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText( currentContext, R.string.eliminar_publicacion_fracaso, Toast.LENGTH_SHORT ).show();
+            }
+        } ) {
+            @Override
+            public Map< String, String > getHeaders() throws AuthFailureError {
+                HashMap< String, String > headers = new HashMap< String, String > ();
+                headers.put( "Authorization", "Bearer " + accessToken );
+                return headers;
+            }
+        };
+        request.add( objectRequest );
     }
 }

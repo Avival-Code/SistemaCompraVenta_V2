@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.VisualizarArticuloCarrito;
+import com.example.sistemacompraventa_v2.VisualizarPublicacionActivity;
 import com.example.sistemacompraventa_v2.entidades.Publicacion;
 
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +48,7 @@ public class AdaptadorPublicacion extends RecyclerView.Adapter< AdaptadorPublica
         holder.mainLayout.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
-                Intent intent = new Intent( contextView, VisualizarArticuloCarrito.class );
+                Intent intent = new Intent( contextView, VisualizarPublicacionActivity.class );
                 intent.putExtra( "clave_publicacion", publicaciones.get( position ).getClave_publicacion() );
                 intent.putExtra( "nombre", publicaciones.get( position ).getNombre() );
                 intent.putExtra( "descripcion", publicaciones.get( position ).getDescripcion() );

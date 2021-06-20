@@ -100,32 +100,34 @@
     <!--Cadenas de respuesta para la clase "ApiRequest.java"-->
     <string name="usuario_ya_existe">El usuario ya existe.</string>
     <string name="usuario_creado_exito">El usuario fue creado exitosamente.</string>
-    <string name="login_exitoso">Inicio de sesion exitosa</string>
-    <string name="login_fracaso">Sucedio un error al momento de iniciar sesion o el usuario no existe.</string>
+    <string name="login_exitoso">Inicio de sesión exitosa</string>
+    <string name="login_fracaso">Sucedio un error al momento de iniciar sesión o el usuario no existe.</string>
     <string name="usuario_no_encontrado">No se encontro el usuario especificado.</string>
     <string name="clave_usuario_no_encontrada">No se encontro el usuario con la clave especificada.</string>
-    <string name="actualizacion_exitosa">Actualizacion de datos exitosa.</string>
+    <string name="actualizacion_exitosa">Actualización de datos exitosa.</string>
     <string name="actualizacion_fracaso">No se pueden actualizar sus datos en este momento. Inténtelo más tarde.</string>
     <string name="eliminacion_exitosa">Tu cuenta se ha eliminado de manera exitosa.</string>
     <string name="eliminacion_fracaso">No se pudo eliminar su cuenta en este momento. Inténtelo más tarde.</string>
     <string name="publicaciones_no_encontradas">No se encontraron publicaciones o ocurrio un error.</string>
     <string name="agregar_favorito_exitoso">Se agrego exitosamente a la lista de favoritos.</string>
-    <string name="agregar_favorito_fracaso">La publicacion ya esta en la lista de favoritos o ocurrio un error.</string>
+    <string name="agregar_favorito_fracaso">La publicación ya esta en la lista de favoritos o ocurrio un error.</string>
     <string name="agregar_carrito_exitoso">Se agrego exitosamente al carrito de compras.</string>
-    <string name="agregar_carrito_fracaso">La publicacion ya esta en el carrito de compra o ocurrio un error.</string>
-    <string name="eliminar_articulo_carrito_exito">Se elimino el articulo del carrito.</string>
+    <string name="agregar_carrito_fracaso">La publicación ya esta en el carrito de compra o ocurrio un error.</string>
+    <string name="eliminar_articulo_carrito_exito">Se eliminó el articulo del carrito.</string>
     <string name="eliminar_articulo_carrito_fracaso">No se pudo eliminar el articulo del carrito.</string>
-    <string name="eliminar_articulo_favorito_exito">Se elimino el articulo de tus favoritos exitosamente.</string>
+    <string name="eliminar_articulo_favorito_exito">Se eliminó el articulo de tus favoritos exitosamente.</string>
     <string name="eliminar_articulo_favorito_fracaso">No se pudo eliminar el articulo de tus favoritos.</string>
     <string name="agregar_evaluacion_exito">La evaluación ha sido enviada de manera exitosa.</string>
     <string name="agregar_evaluacion_fracaso">No se pudo mandar la evaluación.</string>
     <string name="agregar_domicilio_exito">Se ha creado el domicilio exitosamente</string>
-    <string name="agregar_domicilio_fracaso">No se pudo crear el domicilio. Intentelo mas tarde.</string>
+    <string name="agregar_domicilio_fracaso">No se pudo crear el domicilio. Inténtelo mas tarde.</string>
     <string name="domicilios_no_encontrados">No se encontraron domicilios.</string>
     <string name="eliminar_domicilio_exito">Se ha eliminado el domicilio exitosamente.</string>
     <string name="eliminar_domicilio_fracaso">No se pudo eliminar el domicilio.</string>
     <string name="crear_publicacion_exito">Se ha publicado el producto de manera exitosa.</string>
     <string name="crear_publicacion_fracaso">No se pudo publicar el producto.</string>
+    <string name="eliminar_publicacion_exito">Se ha eliminado la publicación de manera exitosa</string>
+    <string name="eliminar_publicacion_fracaso">No se pudo eliminar la publicación.</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>

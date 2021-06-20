@@ -24,12 +24,14 @@ public class VisualizarArticuloCarrito extends AppCompatActivity implements View
     private ImageView imagen;
     private Button eliminarArticuloButton;
     private Publicacion publicacion;
+    private boolean eliminado;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.visualizar_articulo_carrito_activity );
 
+        eliminado = false;
         requests = new ApiRequests();
         titulo = findViewById( R.id.titulo_carrito );
         descripcion = findViewById( R.id.descripcion_carrito );
@@ -49,10 +51,12 @@ public class VisualizarArticuloCarrito extends AppCompatActivity implements View
     public void onClick( View view ) {
         switch( view.getId() ) {
             case R.id.eliminar_carrito_button:
-                requests.eliminarArticuloCarrito( getBaseContext(), LoginSession.getInstance().getClaveUsuario(),
-                         publicacion.getClave_publicacion(), LoginSession.getInstance().getAccessToken() );
-                LoginSession.getInstance().eliminarArticuloCarrito( publicacion.getClave_publicacion() );
-                finish();
+                if( !eliminado ) {
+                    eliminado = true;
+                    requests.eliminarArticuloCarrito( getBaseContext(), LoginSession.getInstance().getClaveUsuario(),
+                            publicacion.getClave_publicacion(), LoginSession.getInstance().getAccessToken() );
+                    LoginSession.getInstance().eliminarArticuloCarrito( publicacion.getClave_publicacion() );
+                }
                 break;
         }
     }

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.sistemacompraventa_v2.entidades.Publicacion;
 import com.example.sistemacompraventa_v2.enumeraciones.Categoria;
+import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.utilities.ApiRequests;
 
 public class VisualizarPublicacionActivity extends AppCompatActivity implements View.OnClickListener {
@@ -52,7 +53,7 @@ public class VisualizarPublicacionActivity extends AppCompatActivity implements 
             case R.id.eliminar_publicacion_button:
                 if( !eliminado ) {
                     eliminado = true;
-
+                    requests.eliminarPublicacion( this, publicacion.getClave_publicacion(), LoginSession.getInstance().getAccessToken() );
                 }
                 break;
         }

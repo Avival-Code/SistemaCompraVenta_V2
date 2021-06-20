@@ -76,6 +76,10 @@
     <string name="cantidad_carrito">Cantidad:</string>
     <string name="eliminar_carrito_button">Eliminar de Carrito de Compras</string>
 
+    <!--Cadenas del fragmento publicacion_fragment-->
+    <string name="crear_publicacion_button">Crear Publicacion</string>
+    <string name="ver_publicaciones_button">Ver Publicaciones Actuales</string>
+
     <!--Cadenas de respuesta para la clase "ApiRequest.java"-->
     <string name="usuario_ya_existe">El usuario ya existe.</string>
     <string name="usuario_creado_exito">El usuario fue creado exitosamente.</string>

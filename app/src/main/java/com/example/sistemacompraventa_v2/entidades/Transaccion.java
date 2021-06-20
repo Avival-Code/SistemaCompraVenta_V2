@@ -1,5 +1,7 @@
 package com.example.sistemacompraventa_v2.entidades;
 
+import java.util.List;
+
 public class Transaccion {
     private int clave_transaccion;
     private int clave_vendedor;
@@ -7,6 +9,7 @@ public class Transaccion {
     private String fecha;
     private double total;
     private boolean usuario_evaluado;
+    private List< Integer > publicaciones;
 
     public Transaccion() {
         clave_transaccion = 0;
@@ -15,6 +18,7 @@ public class Transaccion {
         fecha = "";
         total = 0.0;
         usuario_evaluado = false;
+        publicaciones = null;
     }
 
     public Transaccion( Transaccion original ) {
@@ -24,16 +28,18 @@ public class Transaccion {
         fecha = original.fecha;
         total = original.total;
         usuario_evaluado = original.usuario_evaluado;
+        publicaciones = original.publicaciones;
     }
 
     public Transaccion( int claveTransaccionIn, int claveVendedorIn, String direccionIn, String fechaIn, double totalIn,
-                        boolean evaluadoin ) {
+                        boolean evaluadoin, List< Integer > publicacionesIn ) {
         clave_transaccion = claveTransaccionIn;
         clave_vendedor = claveVendedorIn;
         direccion_comprador = direccionIn;
         fecha = fechaIn;
         total = totalIn;
         usuario_evaluado = evaluadoin;
+        publicaciones = publicacionesIn;
     }
 
     public int getClaveTransaccion() { return clave_transaccion; }
@@ -47,4 +53,6 @@ public class Transaccion {
     public double getTotal() { return total; }
 
     public boolean getEvaluado() { return usuario_evaluado; }
+
+    public List< Integer > getPublicaciones() { return publicaciones; }
 }

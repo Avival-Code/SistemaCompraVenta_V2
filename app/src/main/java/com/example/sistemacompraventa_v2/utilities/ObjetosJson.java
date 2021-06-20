@@ -3,6 +3,7 @@ package com.example.sistemacompraventa_v2.utilities;
 import com.example.sistemacompraventa_v2.entidades.Domicilio;
 import com.example.sistemacompraventa_v2.entidades.EvaluacionUsuario;
 import com.example.sistemacompraventa_v2.entidades.Publicacion;
+import com.example.sistemacompraventa_v2.entidades.Transaccion;
 import com.example.sistemacompraventa_v2.entidades.Usuario;
 
 import org.json.JSONObject;
@@ -57,6 +58,20 @@ public class ObjetosJson {
         objeto.put( "unidad_medida", publicacion.getUnidad_medida() );
         objeto.put( "numero_ventas", publicacion.getNumero_ventas() );
         objeto.put( "imagen", publicacion.getImagen() );
+        return objeto;
+    }
+
+    public JSONObject crearObjetoJson( Transaccion transaccion ) throws org.json.JSONException {
+        JSONObject objeto = new JSONObject();
+        objeto.put( "clave_transaccion", transaccion.getClaveTransaccion() );
+        objeto.put( "clave_vendedor", transaccion.getClaveVendedor() );
+        objeto.put( "direccion_comprador", transaccion.getDireccionComprador() );
+        objeto.put( "fecha_venta", transaccion.getFecha() );
+        objeto.put( "total", transaccion.getTotal() );
+        objeto.put( "usuario_evaluado", transaccion.getEvaluado() );
+        for( Integer id : transaccion.getPublicaciones() ) {
+            objeto.put( "claves_productos", id );
+        }
         return objeto;
     }
 

@@ -18,6 +18,7 @@ import com.example.sistemacompraventa_v2.BuscarActivity;
 import com.example.sistemacompraventa_v2.FavoritosActivity;
 import com.example.sistemacompraventa_v2.MainActivity;
 import com.example.sistemacompraventa_v2.R;
+import com.example.sistemacompraventa_v2.RealizarPedidoActivity;
 import com.example.sistemacompraventa_v2.RevisarHistorialActivity;
 import com.example.sistemacompraventa_v2.controladores.CarritoFragmento;
 import com.example.sistemacompraventa_v2.controladores.DomicilioFragmento;
@@ -432,7 +433,7 @@ public class ApiRequests {
                         JSONObject object = response.getJSONObject( currentObject );
                         transacciones.add( new Transaccion( object.getInt( "clave_transaccion" ), object.getInt( "clave_vendedor" ),
                                 object.getString( "direccion_comprador" ), object.getString( "fecha_venta" ), object.getDouble( "total" ),
-                                object.getBoolean( "usuario_evaluado" ) ) );
+                                object.getBoolean( "usuario_evaluado" ), null ) );
                     } catch( org.json.JSONException json ) {
                         json.printStackTrace();
                     }
@@ -453,6 +454,35 @@ public class ApiRequests {
             }
         };
         request.add( arrayRequest );
+    }
+
+    public void agregarTransaccion( final Context currentContext, final int claveUsuario, final Transaccion transaccion, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentContext );
+        try {
+            String requestURL = transaccionesURL + "/" + claveUsuario;
+            JSONObject payload = objetos.crearObjetoJson( transaccion );
+            JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.POST, requestURL, payload, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Toast.makeText( currentContext, R.string.agregar_transaccion_exito, Toast.LENGTH_SHORT ).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText( currentContext, R.string.agregar_transaccion_fracaso, Toast.LENGTH_SHORT ).show();
+                }
+            }) {
+                @Override
+                public Map< String, String > getHeaders() throws AuthFailureError {
+                    HashMap< String, String > headers = new HashMap< String, String > ();
+                    headers.put( "Authorization", "Bearer " + accessToken );
+                    return headers;
+                }
+            };
+            request.add( objectRequest );
+        } catch( org.json.JSONException json ) {
+            json.printStackTrace();
+        }
     }
 
     public void sendEvaluacionUsuario(final Context currentContext, final int claveUsuario, final EvaluacionUsuario evaluacion, final String accessToken ) {
@@ -507,6 +537,41 @@ public class ApiRequests {
             @Override
             public void onErrorResponse( VolleyError error ) {
                 Toast.makeText( currentContext, R.string.domicilios_no_encontrados, Toast.LENGTH_SHORT ).show();
+            }
+        } ) {
+            @Override
+            public Map< String, String > getHeaders() throws AuthFailureError {
+                HashMap< String, String > headers = new HashMap< String, String > ();
+                headers.put( "Authorization", "Bearer " + accessToken );
+                return headers;
+            }
+        };
+        request.add( arrayRequest );
+    }
+
+    public void getDomiciliosUsuarioPedido( final Activity currentActivity, final int claveUsuario, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentActivity.getBaseContext() );
+        String requestURL = usuarioEspecificoURL + claveUsuario + "/domicilios";
+        JsonArrayRequest arrayRequest = new JsonArrayRequest( Request.Method.GET, requestURL, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse( JSONArray response ) {
+                List< Domicilio > domicilios = new ArrayList<>();
+                for( int currentObject = 0; currentObject < response.length(); currentObject++ ) {
+                    try {
+                        JSONObject object = response.getJSONObject( currentObject );
+                        domicilios.add( new Domicilio( object.getInt( "discriminante_domicilio" ), object.getInt( "clave_usuario" ), object.getString( "calle" ),
+                                object.getString( "colonia" ), object.getString( "municipio" ), object.getString( "codigo_postal" ),
+                                object.getString( "estado" ), object.getInt( "numero_interno" ), object.getInt( "numero_externo" ),
+                                object.getString( "descripcion") ) );
+                        ( ( RealizarPedidoActivity )currentActivity ).setSpinnerAdapter( domicilios );
+                    } catch( org.json.JSONException json ) {
+                        json.printStackTrace();
+                    }
+                }
+            }}, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse( VolleyError error ) {
+                Toast.makeText( currentActivity.getBaseContext(), R.string.domicilios_no_encontrados, Toast.LENGTH_SHORT ).show();
             }
         } ) {
             @Override

@@ -128,6 +128,8 @@
     <string name="crear_publicacion_fracaso">No se pudo publicar el producto.</string>
     <string name="eliminar_publicacion_exito">Se ha eliminado la publicación de manera exitosa</string>
     <string name="eliminar_publicacion_fracaso">No se pudo eliminar la publicación.</string>
+    <string name="agregar_transaccion_exito">Se realizo el pedido con exito.</string>
+    <string name="agregar_transaccion_fracaso">No se pudo realizar el pedido.</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>

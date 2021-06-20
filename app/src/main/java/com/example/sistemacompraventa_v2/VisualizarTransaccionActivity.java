@@ -44,7 +44,7 @@ public class VisualizarTransaccionActivity extends AppCompatActivity implements 
                 getIntent().hasExtra( "total" ) && getIntent().hasExtra( "usuario_evaluado" ) ) {
             transaccion = new Transaccion( getIntent().getIntExtra( "clave_transaccion", 1 ), getIntent().getIntExtra( "clave_vendedor", 1 ),
                     getIntent().getStringExtra( "direccion_comprador" ), getIntent().getStringExtra( "fecha" ), getIntent().getDoubleExtra( "total", 1 ),
-                    getIntent().getBooleanExtra( "usuario_evaluado", false ) );
+                    getIntent().getBooleanExtra( "usuario_evaluado", false ), null );
         } else {
             Toast.makeText( this, R.string.no_hay_datos, Toast.LENGTH_SHORT ).show();
         }

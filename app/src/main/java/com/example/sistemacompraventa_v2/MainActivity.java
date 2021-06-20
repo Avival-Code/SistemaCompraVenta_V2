@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.sistemacompraventa_v2.controladores.CarritoFragmento;
 import com.example.sistemacompraventa_v2.controladores.DomicilioFragmento;
 import com.example.sistemacompraventa_v2.controladores.PerfilFragmento;
+import com.example.sistemacompraventa_v2.controladores.PublicacionFragmento;
 import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.controladores.PrincipalFragmento;
 import com.example.sistemacompraventa_v2.controladores.IniciarSesionFragmento;
@@ -85,6 +86,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity( cambiarAFavoritosActivity );
                 break;
             case R.id.pedidos:
+                break;
+            case R.id.publicaciones:
+                getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new PublicacionFragmento() ).commit();
                 break;
             case R.id.historial:
                 break;

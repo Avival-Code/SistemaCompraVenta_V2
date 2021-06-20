@@ -85,6 +85,7 @@
     <string name="precio_publicacion_invalido">El precio no es valido</string>
     <string name="cantidad_publicacion_invalido">La cantidad no es valida</string>
     <string name="unidad_publicacion_invalido">La unidad no es valida</string>
+    <string name="revisar_datos_introducidos_publicacion">Revisa la informacion introducida.</string>
 
     <!--Cadenas de la actividad "VisualizarArticulosCarrito"-->
     <string name="precio_carrito">Precio:</string>

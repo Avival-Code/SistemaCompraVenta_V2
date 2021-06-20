@@ -71,8 +71,8 @@ public class VisualizarDomicilioActivity extends AppCompatActivity implements Vi
             domicilio = new Domicilio( getIntent().getIntExtra( "discriminante_domicilio", 1 ), getIntent().getIntExtra( "clave_usuario", 1 ),
                     getIntent().getStringExtra( "calle" ), getIntent().getStringExtra( "colonia" ),
                     getIntent().getStringExtra( "municipio" ), getIntent().getStringExtra( "codigo_postal" ),
-                    getIntent().getStringExtra( "estado" ), Integer.parseInt( getIntent().getStringExtra( "numero_interno" ) ),
-                    Integer.parseInt( getIntent().getStringExtra( "numero_externo" ) ), getIntent().getStringExtra( "descripcion" ) );
+                    getIntent().getStringExtra( "estado" ), getIntent().getIntExtra( "numero_interno", 1 ),
+                    getIntent().getIntExtra( "numero_externo", 1 ), getIntent().getStringExtra( "descripcion" ) );
         } else {
             Toast.makeText( this, R.string.no_hay_datos, Toast.LENGTH_SHORT ).show();
         }
@@ -84,8 +84,8 @@ public class VisualizarDomicilioActivity extends AppCompatActivity implements Vi
         municipio.setText( domicilio.getMunicipio() );
         codigo.setText( domicilio.getCodigo() );
         estado.setText( domicilio.getEstado() );
-        numInterno.setText( domicilio.getNumerInterno() );
-        numExterno.setText( domicilio.getNumeroExterno() );
+        numInterno.setText( Integer.toString( domicilio.getNumerInterno() ) );
+        numExterno.setText( Integer.toString( domicilio.getNumeroExterno() ) );
         descripcion.setText( domicilio.getDescripcion() );
     }
 }

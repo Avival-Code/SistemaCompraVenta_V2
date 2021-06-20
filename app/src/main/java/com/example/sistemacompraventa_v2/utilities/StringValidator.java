@@ -36,7 +36,7 @@ public class StringValidator {
     public boolean IsPublicacionInformationValid( Publicacion publicacion ) {
         return IsPublicacionStringValid( publicacion.getNombre() ) && IsPublicacionStringValid( publicacion.getDescripcion() ) &&
                 IsPublicacionNumberValid( Integer.toString( publicacion.getCategoria().ordinal() ) ) &&
-                IsPublicacionNumberValid( Double.toString( publicacion.getPrecio() ) ) &&
+                IsPublicacionNumberValid( Integer.toString( ( int )publicacion.getPrecio() ) ) &&
                 IsPublicacionNumberValid( Integer.toString( publicacion.getCantidad_disponible() ) ) &&
                 IsPublicacionStringValid( publicacion.getUnidad_medida() );
     }

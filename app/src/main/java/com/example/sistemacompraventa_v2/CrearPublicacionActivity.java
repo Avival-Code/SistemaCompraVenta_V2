@@ -36,11 +36,13 @@ public class CrearPublicacionActivity extends AppCompatActivity implements View.
     @Override
     public void onClick( View view ) {
         switch( view.getId() ) {
-            case R.id.crear_publicacion_button:
+            case R.id.publicar_publicacion_button:
                 CheckUserInput();
                 if( !creoPublicacion && validator.IsPublicacionInformationValid( CreatePublicacion() ) ) {
                     creoPublicacion = true;
                     requests.crearPublicacion( this, LoginSession.getInstance().getClaveUsuario(), CreatePublicacion(), LoginSession.getInstance().getAccessToken() );
+                } else {
+                    Toast.makeText( this, R.string.revisar_datos_introducidos_publicacion, Toast.LENGTH_SHORT ).show();
                 }
                 break;
         }
@@ -56,37 +58,37 @@ public class CrearPublicacionActivity extends AppCompatActivity implements View.
     }
 
     private void CheckNombre() {
-        if ( !validator.IsDomicilioStringValid( ( (EditText)findViewById( R.id.nombre_crear_publicacion ) ).getText().toString() ) ) {
+        if ( !validator.IsPublicacionStringValid( ( (EditText)findViewById( R.id.nombre_crear_publicacion ) ).getText().toString() ) ) {
             Toast.makeText( this, R.string.nombre_publicacion_invalido, Toast.LENGTH_SHORT ).show();
         }
     }
 
     private void CheckDescripcion() {
-        if ( !validator.IsDomicilioStringValid( ( ( EditText )findViewById( R.id.descripcion_crear_publicacion ) ).getText().toString() ) ) {
+        if ( !validator.IsPublicacionDescripcionValid( ( ( EditText )findViewById( R.id.descripcion_crear_publicacion ) ).getText().toString() ) ) {
             Toast.makeText( this, R.string.descripcion_publicacion_invalido, Toast.LENGTH_SHORT ).show();
         }
     }
 
     private void CheckCategoria() {
-        if ( !validator.IsDomicilioStringValid( ( ( EditText )findViewById( R.id.categoria_crear_publicacion ) ).getText().toString() ) ) {
+        if ( !validator.IsPublicacionStringValid( ( ( EditText )findViewById( R.id.categoria_crear_publicacion ) ).getText().toString() ) ) {
             Toast.makeText( this, R.string.categoria_publicacion_invalido, Toast.LENGTH_SHORT ).show();
         }
     }
 
     private void CheckPrecio() {
-        if ( !validator.IsDomicilioStringValid( ( ( EditText )findViewById( R.id.precio_crear_publicacion ) ).getText().toString() ) ) {
+        if ( !validator.IsPublicacionNumberValid( ( ( EditText )findViewById( R.id.precio_crear_publicacion ) ).getText().toString() ) ) {
             Toast.makeText( this, R.string.precio_publicacion_invalido, Toast.LENGTH_SHORT ).show();
         }
     }
 
     private void CheckCantidadDisponible() {
-        if ( !validator.IsDomicilioStringValid( ( ( EditText )findViewById( R.id.cantidad_crear_publicacion ) ).getText().toString() ) ) {
+        if ( !validator.IsPublicacionNumberValid( ( ( EditText )findViewById( R.id.cantidad_crear_publicacion ) ).getText().toString() ) ) {
             Toast.makeText( this, R.string.cantidad_publicacion_invalido, Toast.LENGTH_SHORT ).show();
         }
     }
 
     private void CheckUnidadMedida() {
-        if ( !validator.IsDomilicioNumberValid( ( ( EditText )findViewById( R.id.unidad_crear_producto ) ).getText().toString() ) ) {
+        if ( !validator.IsPublicacionStringValid( ( ( EditText )findViewById( R.id.unidad_crear_producto ) ).getText().toString() ) ) {
             Toast.makeText( this, R.string.unidad_publicacion_invalido, Toast.LENGTH_SHORT ).show();
         }
     }

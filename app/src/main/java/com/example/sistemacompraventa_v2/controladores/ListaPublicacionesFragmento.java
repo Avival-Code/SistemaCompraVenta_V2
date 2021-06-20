@@ -15,6 +15,7 @@ import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.adaptadores.AdaptadorDomicilio;
 import com.example.sistemacompraventa_v2.adaptadores.AdaptadorPublicacion;
 import com.example.sistemacompraventa_v2.entidades.Publicacion;
+import com.example.sistemacompraventa_v2.sesionusuario.LoginSession;
 import com.example.sistemacompraventa_v2.utilities.ApiRequests;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class ListaPublicacionesFragmento extends Fragment {
 
         requests = new ApiRequests();
         recyclerView = listaPublcacionesView.findViewById( R.id.recyclerViewListaPublicacion );
+        requests.getPublicacionesUsuario( this, getContext(), LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
         return listaPublcacionesView;
     }
 

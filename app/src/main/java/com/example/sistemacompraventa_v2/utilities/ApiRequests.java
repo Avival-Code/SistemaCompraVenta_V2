@@ -20,6 +20,7 @@ import com.example.sistemacompraventa_v2.MainActivity;
 import com.example.sistemacompraventa_v2.R;
 import com.example.sistemacompraventa_v2.RevisarHistorialActivity;
 import com.example.sistemacompraventa_v2.controladores.CarritoFragmento;
+import com.example.sistemacompraventa_v2.controladores.DomicilioFragmento;
 import com.example.sistemacompraventa_v2.entidades.Domicilio;
 import com.example.sistemacompraventa_v2.entidades.EvaluacionUsuario;
 import com.example.sistemacompraventa_v2.entidades.Publicacion;
@@ -481,5 +482,40 @@ public class ApiRequests {
         } catch( org.json.JSONException json ) {
             json.printStackTrace();
         }
+    }
+
+    public void getDomiciliosUsuario( final Fragment currentFragment, final Context currentContext, final int claveUsuario, final String accessToken ) {
+        RequestQueue request = Volley.newRequestQueue( currentContext );
+        String requestURL = usuarioEspecificoURL + claveUsuario + "/domicilios";
+        JsonArrayRequest arrayRequest = new JsonArrayRequest( Request.Method.GET, requestURL, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse( JSONArray response ) {
+                List< Domicilio > domicilios = new ArrayList<>();
+                for( int currentObject = 0; currentObject < response.length(); currentObject++ ) {
+                    try {
+                        JSONObject object = response.getJSONObject( currentObject );
+                        domicilios.add( new Domicilio( object.getInt( "discriminante_domicilio" ), object.getInt( "clave_usuario" ), object.getString( "calle" ),
+                                object.getString( "colonia" ), object.getString( "municipio" ), object.getString( "codigo_postal" ),
+                                object.getString( "estado" ), object.getInt( "numero_interno" ), object.getInt( "numero_externo" ),
+                                object.getString( "descripcion") ) );
+                        ( ( DomicilioFragmento )currentFragment ).SetDomicilios( domicilios );
+                    } catch( org.json.JSONException json ) {
+                        json.printStackTrace();
+                    }
+                }
+            }}, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse( VolleyError error ) {
+                Toast.makeText( currentContext, R.string.domicilios_no_encontrados, Toast.LENGTH_SHORT ).show();
+            }
+        } ) {
+            @Override
+            public Map< String, String > getHeaders() throws AuthFailureError {
+                HashMap< String, String > headers = new HashMap< String, String > ();
+                headers.put( "Authorization", "Bearer " + accessToken );
+                return headers;
+            }
+        };
+        request.add( arrayRequest );
     }
 }

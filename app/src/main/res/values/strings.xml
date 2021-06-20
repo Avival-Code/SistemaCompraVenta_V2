@@ -26,6 +26,10 @@
     <string name="fecha_transaccion_card">Fecha de Transaccion:</string>
     <string name="total_transaccion_card">Total:</string>
 
+    <!--Cadenas de la tarjeta domicilio_card_row-->
+    <string name="calle_titulo">Calle</string>
+    <string name="colonia_card_text">Colonia</string>
+
     <!--Cadenas de el encabezado de navegacion-->
     <string name="sistema_cv">Sistema de Compra Venta</string>
     <string name="mensaje_bienvenida">Bienvenido!</string>
@@ -96,6 +100,7 @@
     <string name="agregar_evaluacion_fracaso">No se pudo mandar la evaluación.</string>
     <string name="agregar_domicilio_exito">Se ha creado el domicilio exitosamente</string>
     <string name="agregar_domicilio_fracaso">No se pudo crear el domicilio. Intentelo mas tarde.</string>
+    <string name="domicilios_no_encontrados">No se encontraron domicilios.</string>
 
     <!--Cadenas de respuesta de clase String Validator-->
     <string name="nombres_invalidos">Los nombres introducidos no son validos.</string>

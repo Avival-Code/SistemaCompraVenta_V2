@@ -22,6 +22,7 @@ public class EvaluarUsuarioActivity extends AppCompatActivity implements View.On
     private EditText contenidoEvaluacion;
     private Button mandarEvaluacionBoton;
     private int claveUsuarioEvaluado;
+    private int transaccionEvaluada;
     private boolean evaluacionEnviada;
     private ApiRequests requests;
     private Spinner spinner;
@@ -38,7 +39,9 @@ public class EvaluarUsuarioActivity extends AppCompatActivity implements View.On
         contenidoEvaluacion = findViewById( R.id.contenidoEvaluacion );
         mandarEvaluacionBoton = findViewById( R.id.mandarEvaluacionUsuarioButton );
         claveUsuarioEvaluado = getIntent().getIntExtra( "clave_vendedor", -1 );
+        transaccionEvaluada = getIntent().getIntExtra( "clave_transaccion", -1 );
 
+        mandarEvaluacionBoton.setOnClickListener( this );
         spinner.setOnItemSelectedListener( this );
         setSpinnerAdapter();
     }
@@ -48,7 +51,7 @@ public class EvaluarUsuarioActivity extends AppCompatActivity implements View.On
         switch( view.getId() ) {
             case R.id.mandarEvaluacionUsuarioButton:
                 if( !evaluacionEnviada ) {
-                    requests.sendEvaluacionUsuario( this, LoginSession.getInstance().getClaveUsuario(), evaluacion, LoginSession.getInstance().getAccessToken() );
+                    requests.sendEvaluacionUsuario( this, LoginSession.getInstance().getClaveUsuario(), evaluacion, transaccionEvaluada, LoginSession.getInstance().getAccessToken() );
                     evaluacionEnviada = true;
                 } else {
                     Toast.makeText( this, R.string.evaluacion_ya_fue_enviada, Toast.LENGTH_SHORT ).show();

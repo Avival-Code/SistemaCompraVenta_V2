@@ -55,7 +55,13 @@ public class BuscarActivity extends AppCompatActivity {
     }
 
     public void setPublicaciones( List< Publicacion > publicacionesIn ) {
-        publicaciones = publicacionesIn;
+        publicaciones = new ArrayList<>();
+        for( int i = 0; i < publicacionesIn.size(); i++ ) {
+            if( publicacionesIn.get( i ).getCantidad_disponible() > 0 ) {
+                publicaciones.add( publicacionesIn.get( i ) );
+            }
+        }
+
         adaptador = new AdaptadorBuscar( this, publicaciones );
         recyclerView.setAdapter( adaptador );
         recyclerView.setLayoutManager( new LinearLayoutManager( this ) );

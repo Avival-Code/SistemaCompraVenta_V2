@@ -26,7 +26,7 @@ public class AdaptadorTransaccion extends RecyclerView.Adapter< AdaptadorTransac
     Context viewContext;
     private List< Transaccion > transacciones;
 
-    public AdaptadorTransaccion(Context contextIn ) {
+    public AdaptadorTransaccion( Context contextIn ) {
         viewContext = contextIn;
         transacciones = LoginSession.getInstance().getTransaccionesUsuario();
     }
@@ -41,8 +41,8 @@ public class AdaptadorTransaccion extends RecyclerView.Adapter< AdaptadorTransac
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull AdaptadorTransaccion.MyViewHolder holder, final int position ) {
-        holder.claveTransaccion.setText( transacciones.get( position ).getClaveTransaccion() );
+    public void onBindViewHolder( @NonNull @NotNull AdaptadorTransaccion.MyViewHolder holder, final int position ) {
+        holder.claveTransaccion.setText( Integer.toString( transacciones.get( position ).getClaveTransaccion() ) );
         holder.fecha.setText( transacciones.get( position ).getFecha() );
         holder.total.setText( Double.toString( transacciones.get( position ).getTotal() ) );
 
@@ -55,6 +55,7 @@ public class AdaptadorTransaccion extends RecyclerView.Adapter< AdaptadorTransac
                 intent.putExtra( "direccion_comprador", transacciones.get( position ).getDireccionComprador() );
                 intent.putExtra( "fecha", transacciones.get( position ).getFecha() );
                 intent.putExtra( "total", transacciones.get( position ).getTotal() );
+                intent.putExtra( "usuario_evaluado", transacciones.get( position ).getEvaluado() );
                 viewContext.startActivity( intent );
             }
         } );

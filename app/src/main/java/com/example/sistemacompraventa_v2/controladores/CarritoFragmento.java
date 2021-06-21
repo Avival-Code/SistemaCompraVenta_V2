@@ -48,8 +48,9 @@ public class CarritoFragmento extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
+        super.onStart();
+        requests.getArticulosCarrito( this, getActivity().getBaseContext(), LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
         setData();
     }
 
@@ -85,6 +86,11 @@ public class CarritoFragmento extends Fragment implements View.OnClickListener{
             cantidadText.setText( "" );
             subtotalText.setText( "" );
         }
+    }
+
+    public void clearData() {
+        cantidadText.setText( "" );
+        subtotalText.setText( "" );
     }
 
     private double getSubtotal( List< Publicacion > articulos ) {

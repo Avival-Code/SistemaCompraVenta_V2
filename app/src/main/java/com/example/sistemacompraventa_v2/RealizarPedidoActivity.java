@@ -42,6 +42,9 @@ public class RealizarPedidoActivity extends AppCompatActivity implements View.On
         mandarPedidoButton = findViewById( R.id.mandar_pedido_button );
         domiciliosSpinner = findViewById( R.id.spinner_pedidos );
 
+        mandarPedidoButton.setOnClickListener( this );
+        domiciliosSpinner.setOnItemSelectedListener( this );
+
         SetInformation();
         requests.getDomiciliosUsuarioPedido( this, LoginSession.getInstance().getClaveUsuario(), LoginSession.getInstance().getAccessToken() );
     }

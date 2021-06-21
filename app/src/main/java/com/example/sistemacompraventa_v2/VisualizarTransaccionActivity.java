@@ -51,8 +51,8 @@ public class VisualizarTransaccionActivity extends AppCompatActivity implements 
     }
 
     private void setData() {
-        claveTransaccion.setText( transaccion.getClaveTransaccion() );
-        claveVendedor.setText( transaccion.getClaveVendedor() );
+        claveTransaccion.setText( Integer.toString( transaccion.getClaveTransaccion() ) );
+        claveVendedor.setText( Integer.toString( transaccion.getClaveVendedor() ) );
         precio.setText( Double.toString( transaccion.getTotal() ) );
         fecha.setText( transaccion.getFecha() );
     }
@@ -64,6 +64,7 @@ public class VisualizarTransaccionActivity extends AppCompatActivity implements 
                 if( !transaccion.getEvaluado() ) {
                     Intent intent = new Intent( getBaseContext(), EvaluarUsuarioActivity.class );
                     intent.putExtra( "clave_vendedor", transaccion.getClaveVendedor() );
+                    intent.putExtra( "clave_transaccion", transaccion.getClaveTransaccion() );
                     getBaseContext().startActivity( intent );
                 } else {
                     Toast.makeText( this, R.string.usuario_ya_esta_evaluado, Toast.LENGTH_SHORT ).show();

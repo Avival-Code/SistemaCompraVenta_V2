@@ -22,12 +22,13 @@ public class ObjetosJson {
         return objeto;
     }
 
-    public JSONObject crearObjetoJson( EvaluacionUsuario evaluacion ) throws org.json.JSONException {
+    public JSONObject crearObjetoJson( EvaluacionUsuario evaluacion, int claveTransaccion ) throws org.json.JSONException {
         JSONObject objeto = new JSONObject();
         objeto.put( "clave_usuario", evaluacion.getClaveUsuario() );
         objeto.put( "clave_evaluador_de_usuario", evaluacion.getClaveEvaluador() );
         objeto.put( "evaluacion", evaluacion.getEvaluacion() );
         objeto.put( "calificacion", evaluacion.getCalificacion() );
+        objeto.put( "clave_transaccion", claveTransaccion );
         return objeto;
     }
 

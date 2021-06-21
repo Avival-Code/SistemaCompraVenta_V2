@@ -201,15 +201,17 @@ public class ApiRequests {
                                 Categoria.values()[ object.getInt( "categoria" ) ], object.getDouble( "precio" ), object.getInt( "cantidad_disponible" ),
                                 object.getDouble( "calificacion_general" ), object.getString( "unidad_medida" ), object.getInt( "numero_ventas" ),
                                 object.getString( "imagen") ) );
-                        LoginSession.getInstance().setArticulosCarrito( publicaciones );
-                        ( ( CarritoFragmento )currentFragment ).setData();
                     } catch( org.json.JSONException json ) {
                         json.printStackTrace();
                     }
                 }
+                LoginSession.getInstance().setArticulosCarrito( publicaciones );
+                ( ( CarritoFragmento )currentFragment ).setData();
             }}, new Response.ErrorListener() {
             @Override
             public void onErrorResponse( VolleyError error ) {
+                LoginSession.getInstance().setArticulosCarrito( null );
+                ( ( CarritoFragmento )currentFragment ).clearData();
                 Toast.makeText( currentContext, R.string.publicaciones_no_encontradas, Toast.LENGTH_SHORT ).show();
             }
         } ) {
@@ -486,11 +488,11 @@ public class ApiRequests {
         }
     }
 
-    public void sendEvaluacionUsuario(final Context currentContext, final int claveUsuario, final EvaluacionUsuario evaluacion, final String accessToken ) {
+    public void sendEvaluacionUsuario(final Context currentContext, final int claveUsuario, final EvaluacionUsuario evaluacion, final int claveTransaccion, final String accessToken ) {
         RequestQueue request = Volley.newRequestQueue( currentContext );
         try {
             String requestURL = usuarioEspecificoURL + claveUsuario + "/evaluaciones";
-            JSONObject payload = objetos.crearObjetoJson( evaluacion );
+            JSONObject payload = objetos.crearObjetoJson( evaluacion, claveTransaccion );
             JsonObjectRequest objectRequest = new JsonObjectRequest( Request.Method.POST, requestURL, payload, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {

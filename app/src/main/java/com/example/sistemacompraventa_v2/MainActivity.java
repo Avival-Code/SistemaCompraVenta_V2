@@ -85,12 +85,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent cambiarAFavoritosActivity = new Intent( this, FavoritosActivity.class );
                 startActivity( cambiarAFavoritosActivity );
                 break;
-            case R.id.pedidos:
-                break;
             case R.id.publicaciones:
                 getSupportFragmentManager().beginTransaction().replace( R.id.Fragment_container, new PublicacionFragmento() ).commit();
                 break;
             case R.id.historial:
+                Intent cambiarAHistorial = new Intent( this, RevisarHistorialActivity.class );
+                startActivity( cambiarAHistorial );
                 break;
             case R.id.cerrarSesion:
                 LoginSession.getInstance().logout();

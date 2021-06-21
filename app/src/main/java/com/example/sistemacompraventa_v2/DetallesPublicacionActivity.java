@@ -77,7 +77,7 @@ public class DetallesPublicacionActivity extends AppCompatActivity implements Vi
                 getIntent().hasExtra( "numero_ventas" ) && getIntent().hasExtra( "imagen" ) ) {
             publicacion = new Publicacion( getIntent().getIntExtra( "clave_publicacion", 1 ), getIntent().getStringExtra( "nombre" ),
                                            getIntent().getStringExtra( "descripcion" ), Categoria.values()[ getIntent().getIntExtra( "categoria", 1 ) ],
-                                           getIntent().getDoubleExtra( "precio", 0.0 ), getIntent().getIntExtra( "cantidad", 1 ),
+                                           getIntent().getDoubleExtra( "precio", 0.0 ), getIntent().getIntExtra( "cantidad_disponible", 1 ),
                                            getIntent().getDoubleExtra( "calificacion", 0.0 ), getIntent().getStringExtra( "unidad_medida" ),
                                            getIntent().getIntExtra( "numero_ventas", 1 ), getIntent().getStringExtra( "imagen" ) );
         } else {
